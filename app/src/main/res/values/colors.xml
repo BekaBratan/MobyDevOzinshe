@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FEFEFE</color>
+    <color name="info">#2370FE</color>
+    <color name="error">#FE402B</color>
+    <color name="success">#7DD221</color>
+    <color name="warning">#FBD500</color>
+
+
+    <color name="Grey900">#111827</color>
+    <color name="Grey800">#1C2431</color>
+    <color name="Grey700">#374151</color>
+    <color name="Grey600">#4B5563</color>
+    <color name="Grey500">#6B727F</color>
+    <color name="Grey400">#9BA2AE</color>
+    <color name="Grey300">#D0D4DA</color>
+    <color name="Grey200">#E4E6EA</color>
+    <color name="Grey100">#F2F3F5</color>
+    <color name="Grey50">#F8F9FA</color>
+
+
+    <color name="Red900">#1E056E</color>
+    <color name="Red800">#2B0984</color>
+    <color name="Red700">#3E0FA5</color>
+    <color name="Red600">#5415C5</color>
+    <color name="Red500">#7E2DFB</color>
+    <color name="Red400">#9653EF</color>
+    <color name="Red300">#B276F6</color>
+    <color name="Red200">#D0A3FB</color>
+    <color name="Red100">#E9D0FC</color>
+    <color name="Red50">#F7EDFE</color>
+
+    <color name="border">#E5EBF0</color>
+
+</resources>

@@ -21,11 +21,6 @@ interface ApiService {
         @Body authorization: Auth
     ): AuthResponse
 
-    @GET("/core/V1/movies")
-    suspend fun getMoviesList(
-        @Header("Authorization") token: String
-    ): MoviesResponse
-
     @GET("/core/V1/movies/main")
     suspend fun getMainCategoryMoviesList(
         @Header("Authorization") token: String

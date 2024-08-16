@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.presentation.home.adapter.MainMoviesAdapter
 import com.example.mobydevozinshe.databinding.FragmentHomeBinding
-import com.example.mobydevozinshe.presentation.home.adapter.HomeViewModel
+import com.example.mobydevozinshe.presentation.home.adapter.MainCategoryMoviesAdapter
 import com.example.mobydevozinshe.provideNavigationHost
 
 class HomeFragment : Fragment() {
@@ -41,6 +41,13 @@ class HomeFragment : Fragment() {
         binding.rcMainMovies.adapter = adapterMainMovies
         viewModel.mainMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainMovies.submitList(it)
+        }
+
+        viewModel.getMainCategoryMovies(token)
+        val adapterMainCategoryMovies = MainCategoryMoviesAdapter()
+        binding.rcMainCategoryMovies.adapter = adapterMainCategoryMovies
+        viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
+            adapterMainCategoryMovies.submitList(it[0].movies)
         }
     }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.R
+import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.provideNavigationHost
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -37,7 +38,7 @@ class SplashScreenFragment : Fragment() {
         lifecycleScope.launch {
             delay(3000)
             if (isOnboardingFinished())
-                if (isAuthorized())
+                if (SharedProvider(requireContext()).isAuthorized())
                     findNavController().navigate(R.id.action_splashScreenFragment_to_homeFragment)
                 else
                     findNavController().navigate(R.id.action_splashScreenFragment_to_authorizationFragment)
@@ -49,10 +50,5 @@ class SplashScreenFragment : Fragment() {
     private fun isOnboardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("Onboarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
-    }
-
-    private fun isAuthorized(): Boolean {
-        val sharedPref = requireActivity().getSharedPreferences("User", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("isAuthorized", false)
     }
 }

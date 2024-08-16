@@ -1,7 +1,6 @@
-package com.example.mobydevozinshe.presentation
+package com.example.mobydevozinshe.presentation.authorization
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -10,19 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.R
+import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentRegistrationBinding
 import com.example.mobydevozinshe.data.model.Auth
-import com.example.mobydevozinshe.data.model.AuthResponse
-import com.example.mobydevozinshe.data.repository.Repository
-import kotlinx.coroutines.launch
 
 class RegistrationFragment : Fragment() {
 
     private lateinit var binding: FragmentRegistrationBinding
-    private val repository = Repository()
+    private val viewModel: AuthorizationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +33,19 @@ class RegistrationFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.authorizationResponse.observe(viewLifecycleOwner) {
+            Log.d("BBBB", "Success signIn \n $it")
+            SharedProvider(requireContext()).saveUser(it)
+            findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
+            binding.tvError.visibility = View.GONE
+            findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
+        }
+
+        viewModel.errorResponse.observe(viewLifecycleOwner) {
+            Log.e("BBBB", "Fail signIn $it")
+            binding.tvError.visibility = View.VISIBLE
+        }
 
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
@@ -65,24 +75,7 @@ class RegistrationFragment : Fragment() {
             if (isValidEmail(binding.etEmail.text.toString()) && binding.etEmail.text.toString().isNotEmpty() && binding.etPassword1.text.toString()
                     .isNotEmpty() && binding.etPassword1.text.toString() == binding.etPassword2.text.toString()){
                 val auth = Auth(binding.etEmail.text.toString(), binding.etPassword1.text.toString())
-                var user: AuthResponse
-                lifecycleScope.launch {
-                    runCatching { repository.signUp(auth) }
-                        .fold(
-                            onSuccess = {
-                                Log.d("BBBB", "Success signUp \n $it")
-                                user = AuthResponse(it.accessToken, it.email, it.id, it.roles, it.tokenType, it.username)
-                                binding.tvError.visibility = View.GONE
-                                repository.signIn(auth)
-                                saveUser(user)
-                                findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
-                            },
-                            onFailure = {
-                                Log.e("BBBB", "Fail signIn $it")
-                                binding.tvError.visibility = View.VISIBLE
-                            }
-                        )
-                }
+                viewModel.signUp(auth)
             } else {
                 binding.tvError.visibility = View.VISIBLE
             }
@@ -91,19 +84,5 @@ class RegistrationFragment : Fragment() {
 
     private fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    private fun saveUser(user: AuthResponse) {
-        val sharedPref = requireActivity().getSharedPreferences("User", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.clear()
-        editor.putBoolean("isAuthorized", true)
-        editor.putString("AccessToken", user.accessToken)
-        editor.putString("Email", user.email)
-        editor.putStringSet("Roles", user.roles.toSet())
-        editor.putInt("ID", user.id)
-        editor.putString("TokenType", user.tokenType)
-        editor.putString("Username", user.username)
-        editor.apply()
     }
 }

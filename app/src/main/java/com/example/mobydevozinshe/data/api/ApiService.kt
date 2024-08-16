@@ -1,14 +1,13 @@
 package com.example.mobydevozinshe.data.api
 
 import com.example.mobydevozinshe.data.model.Auth
-import com.example.mobydevozinshe.data.model.Movies
+import com.example.mobydevozinshe.data.model.MoviesResponse
 import com.example.mobydevozinshe.data.model.AuthResponse
-import com.example.mobydevozinshe.data.model.MainMovies
+import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponse
+import com.example.mobydevozinshe.data.model.MainMoviesResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.HEAD
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface ApiService {
@@ -25,10 +24,15 @@ interface ApiService {
     @GET("/core/V1/movies")
     suspend fun getMoviesList(
         @Header("Authorization") token: String
-    ): Movies
+    ): MoviesResponse
 
     @GET("/core/V1/movies/main")
+    suspend fun getMainCategoryMoviesList(
+        @Header("Authorization") token: String
+    ): MainCategoryMoviesResponse
+
+    @GET("/core/V1/movies_main")
     suspend fun getMainMoviesList(
         @Header("Authorization") token: String
-    ): MainMovies
+    ): MainMoviesResponse
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mobydevozinshe.R
+import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentOnboardBinding
 import com.example.mobydevozinshe.presentation.onboarding.screens.FirstScreen
 import com.example.mobydevozinshe.presentation.onboarding.screens.SecondScreen
@@ -66,7 +67,7 @@ class OnboardFragment : Fragment() {
         }
 
         binding.btnFinish.setOnClickListener {
-            if (isAuthorized())
+            if (SharedProvider(requireContext()).isAuthorized())
                 findNavController().navigate(R.id.action_onboardFragment_to_homeFragment)
             else
                 findNavController().navigate(R.id.action_onboardFragment_to_authorizationFragment)
@@ -79,10 +80,5 @@ class OnboardFragment : Fragment() {
         val editor = sharedPref.edit()
         editor.putBoolean("Finished", true)
         editor.apply()
-    }
-
-    private fun isAuthorized(): Boolean {
-        val sharedPref = requireActivity().getSharedPreferences("User", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("isAuthorized", false)
     }
 }

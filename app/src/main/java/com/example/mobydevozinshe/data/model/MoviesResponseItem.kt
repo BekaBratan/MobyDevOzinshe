@@ -1,6 +1,6 @@
 package com.example.mobydevozinshe.data.model
 
-data class MoviesItem(
+data class MoviesResponseItem(
     val categories: List<Category>,
     val categoryAges: List<CategoryAge>,
     val createdDate: String,

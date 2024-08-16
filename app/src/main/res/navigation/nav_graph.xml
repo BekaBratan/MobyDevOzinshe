@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/authorizationFragment"
-        android:name="com.example.mobydevozinshe.presentation.AuthorizationFragment"
+        android:name="com.example.mobydevozinshe.presentation.authorization.AuthorizationFragment"
         android:label="fragment_authorization"
         tools:layout="@layout/fragment_authorization" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.mobydevozinshe.presentation.RegistrationFragment"
+        android:name="com.example.mobydevozinshe.presentation.authorization.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.mobydevozinshe.presentation.HomeFragment"
+        android:name="com.example.mobydevozinshe.presentation.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment

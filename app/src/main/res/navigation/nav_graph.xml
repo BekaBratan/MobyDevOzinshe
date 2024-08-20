@@ -73,7 +73,15 @@
         android:id="@+id/homeFragment"
         android:name="com.example.mobydevozinshe.presentation.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="movieId"
+                app:argType="integer" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.example.mobydevozinshe.presentation.FavouriteFragment"
@@ -89,4 +97,13 @@
         android:name="com.example.mobydevozinshe.presentation.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.mobydevozinshe.presentation.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

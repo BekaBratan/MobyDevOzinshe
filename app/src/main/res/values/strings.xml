@@ -27,4 +27,13 @@
     <string name="or">Немесе</string>
     <string name="appleId">Apple ID-мен тіркеліңіз</string>
     <string name="google">Google-мен тіркеліңіз</string>
+    <string name="addToFavourite">Тізімге қосу</string>
+    <string name="share">Бөлісу</string>
+    <string name="director">Режиссер:</string>
+    <string name="producer">Продюсер:</string>
+    <string name="moreDescription">Толығырақ</string>
+    <string name="episodes">Бөлімдер</string>
+    <string name="screenshots">Скриншоттар</string>
+    <string name="similar">Ұқсас телехикаялар</string>
+    <string name="all">Барлығы</string>
 </resources>

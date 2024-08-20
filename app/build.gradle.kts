@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("androidx.navigation.safeargs.kotlin") version "2.7.7"
 }
 
 android {
@@ -71,4 +72,7 @@ dependencies {
 
     // dotsindicator
     implementation(libs.dotsindicator)
+
+    // FadingEdgeLayout
+    implementation (libs.fadingedgelayout)
 }

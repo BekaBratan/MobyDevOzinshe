@@ -48,7 +48,7 @@ class MainMoviesAdapter: RecyclerView.Adapter<MainMoviesAdapter.MyViewHolder>() 
                 .load(item.movie.poster.link)
                 .into(binding.ivScreen)
             itemView.setOnClickListener {
-                listenerClickAtItem?.onClick(item.id)
+                listenerClickAtItem?.onClick(item.movie.id)
             }
         }
     }

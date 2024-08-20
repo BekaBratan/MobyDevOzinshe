@@ -20,7 +20,7 @@ data class MoviesResponseItem(
     val seriesCount: Int,
     val timing: Int,
     val trend: Boolean,
-    val video: Video,
+    val video: Video?,
     val watchCount: Int,
     val year: Int
 )

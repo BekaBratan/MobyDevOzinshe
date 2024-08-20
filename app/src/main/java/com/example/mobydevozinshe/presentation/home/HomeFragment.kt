@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.presentation.home.adapter.MainMoviesAdapter
 import com.example.mobydevozinshe.databinding.FragmentHomeBinding
 import com.example.mobydevozinshe.presentation.home.adapter.MainCategoryMoviesAdapter
+import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickMainMoviesCallback
 import com.example.mobydevozinshe.provideNavigationHost
 
 class HomeFragment : Fragment() {
@@ -39,12 +41,22 @@ class HomeFragment : Fragment() {
 
         val adapterMainMovies = MainMoviesAdapter()
         binding.rcMainMovies.adapter = adapterMainMovies
+        adapterMainMovies.setOnMovieClickListener(object: RcViewItemClickMainMoviesCallback{
+            override fun onClick(movieId: Int) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
+            }
+        })
         viewModel.mainMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainMovies.submitList(it)
         }
 
         viewModel.getMainCategoryMovies(token)
         val adapterMainCategoryMovies = MainCategoryMoviesAdapter()
+        adapterMainCategoryMovies.setOnMovieClickListener(object: RcViewItemClickMainMoviesCallback{
+            override fun onClick(movieId: Int) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
+            }
+        })
         binding.rcMainCategoryMovies.adapter = adapterMainCategoryMovies
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies.submitList(it[0].movies)

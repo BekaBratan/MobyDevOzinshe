@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mobydevozinshe.R
+import com.example.mobydevozinshe.provideNavigationHost
 
 class ProfileFragment : Fragment() {
 
@@ -17,4 +18,10 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        provideNavigationHost()?.apply {
+            setNavigationVisability(true)
+        }
+    }
 }

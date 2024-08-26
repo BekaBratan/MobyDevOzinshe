@@ -28,6 +28,13 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        provideNavigationHost()?.apply {
+            setNavigationVisability(true)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val token = SharedProvider(requireContext()).getToken()
@@ -84,6 +91,15 @@ class DetailFragment : Fragment() {
                 } else {
                     layoutEpisodes.visibility = View.GONE
                 }
+
+                val adapterScreenshot = ImageAdapter()
+                adapterScreenshot.submitList(it.screenshots)
+                adapterScreenshot.setOnImageClickListener(object : RcViewItemClickImageCallback {
+                    override fun onClick(link: String) {
+                        findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToImageFragment(link)                        )
+                    }
+                })
+                rcScreenshots.adapter = adapterScreenshot
             }
         }
 

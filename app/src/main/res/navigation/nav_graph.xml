@@ -105,5 +105,21 @@
         <argument
             android:name="movieId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_to_imageFragment"
+            app:destination="@id/imageFragment">
+            <argument
+                android:name="imgLink"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.example.mobydevozinshe.presentation.detail.ImageFragment"
+        android:label="fragment_image"
+        tools:layout="@layout/fragment_image">
+        <argument
+            android:name="imgLink"
+            app:argType="string" />
     </fragment>
 </navigation>

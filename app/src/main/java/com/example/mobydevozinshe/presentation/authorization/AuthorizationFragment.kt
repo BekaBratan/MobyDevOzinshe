@@ -15,6 +15,7 @@ import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentAuthorizationBinding
 import com.example.mobydevozinshe.data.model.Auth
+import com.example.mobydevozinshe.provideNavigationHost
 
 class AuthorizationFragment : Fragment() {
 
@@ -28,6 +29,13 @@ class AuthorizationFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAuthorizationBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        provideNavigationHost()?.apply {
+            setNavigationVisability(false)
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")

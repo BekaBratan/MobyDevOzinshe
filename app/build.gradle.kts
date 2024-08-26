@@ -75,4 +75,7 @@ dependencies {
 
     // FadingEdgeLayout
     implementation (libs.fadingedgelayout)
+
+    // PhotoView
+    implementation (libs.photoview)
 }

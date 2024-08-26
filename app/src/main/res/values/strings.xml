@@ -19,21 +19,22 @@
     <string name="passwordHint">Сіздің құпия сөзіңіз</string>
     <string name="wrongFormat">Қате формат</string>
     <string name="hello">Сәлем</string>
-    <string name="signinInfo">Аккаунтқа кіріңіз</string>
-    <string name="errorAuthorization">Email немесе Құпия сөзіңіз қате</string>
+    <string name="signin_info">Аккаунтқа кіріңіз</string>
+    <string name="error_authorization">Email немесе Құпия сөзіңіз қате</string>
     <string name="forgotPassword">Құпия сөзді ұмыттыңыз ба?</string>
     <string name="signin">Кіру</string>
-    <string name="linkAuthorization">Аккаунтыныз жоқ па?\u0020</string>
+    <string name="link_authorization">Аккаунтыныз жоқ па?\u0020</string>
     <string name="or">Немесе</string>
     <string name="appleId">Apple ID-мен тіркеліңіз</string>
     <string name="google">Google-мен тіркеліңіз</string>
-    <string name="addToFavourite">Тізімге қосу</string>
+    <string name="add_to_favourite">Тізімге қосу</string>
     <string name="share">Бөлісу</string>
     <string name="director">Режиссер:</string>
     <string name="producer">Продюсер:</string>
-    <string name="moreDescription">Толығырақ</string>
+    <string name="more_description">Толығырақ</string>
     <string name="episodes">Бөлімдер</string>
     <string name="screenshots">Скриншоттар</string>
     <string name="similar">Ұқсас телехикаялар</string>
     <string name="all">Барлығы</string>
+    <string name="hide_description">Жасыру</string>
 </resources>

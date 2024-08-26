@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentDetailBinding
+import com.example.mobydevozinshe.provideNavigationHost
 
 class DetailFragment : Fragment() {
 
@@ -32,16 +34,57 @@ class DetailFragment : Fragment() {
         viewModel.getMovie(token, args.movieId)
 
         viewModel.movieResponseItem.observe(viewLifecycleOwner) {
-            Glide.with(requireContext())
-                .load(it.poster.link)
-                .into(binding.ivScreen)
+            binding.run {
+                btnBack.setOnClickListener {
+                    findNavController().navigateUp()
+                }
 
-            binding.tvTitle.text = it.name
-            binding.tvDescription.text = it.description
-            binding.tvInfo.text = getString(it.year, it.timing)
-            binding.tvTextDirector.text = it.director
-            binding.tvTextProducer.text = it.producer
+                Glide.with(requireContext())
+                    .load(it.poster.link)
+                    .into(ivScreen)
 
+                tvTitle.text = it.name
+                var addInfo = it.year.toString()
+                for (genre in it.genres) {
+                    addInfo += " · ${genre.name}"
+                }
+                addInfo += " · ${it.seasonCount} сезон, ${it.seriesCount} серия, ${it.timing} мин."
+                tvInfo.text = addInfo
+
+                tvDescription.text = it.description
+                if (tvDescription.lineCount > 3) {
+                    tvDescription.maxLines = 7
+                    tvMoreDescription.text = getString(R.string.more_description)
+                    layoutDescription.setFadeEdges(false, false, true, false)
+                    tvMoreDescription.visibility = View.VISIBLE
+                    tvMoreDescription.setOnClickListener {
+                        if (tvDescription.maxLines < 8) {
+                            tvDescription.maxLines = Int.MAX_VALUE
+                            tvMoreDescription.text = getString(R.string.hide_description)
+                            layoutDescription.setFadeEdges(false, false, false, false)
+                        } else {
+                            tvDescription.maxLines = 7
+                            tvMoreDescription.text = getString(R.string.more_description)
+                            layoutDescription.setFadeEdges(false, false, true, false)
+                        }
+                    }
+                } else {
+                    layoutDescription.setFadeEdges(false, false, false, false)
+                    tvMoreDescription.visibility = View.GONE
+                }
+
+                tvTextDirector.text = it.director
+                tvTextProducer.text = it.producer
+
+                if (it.movieType == "SERIAL") {
+                    tvTextEpisodes.text = "${it.seasonCount} сезон, ${it.seriesCount} серия"
+                    layoutEpisodes.setOnClickListener {
+                        // navigate to episode fragment
+                    }
+                } else {
+                    layoutEpisodes.visibility = View.GONE
+                }
+            }
         }
 
     }

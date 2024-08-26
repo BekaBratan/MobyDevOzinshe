@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/signinInfo"
+            android:text="@string/signin_info"
             android:fontFamily="@font/sfprodisplayregular"
             android:textSize="16sp"
             android:textColor="@color/Grey500"/>
@@ -146,7 +146,7 @@
             android:id="@+id/tvError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/errorAuthorization"
+            android:text="@string/error_authorization"
             android:textAlignment="center"
             android:fontFamily="@font/sfprodisplayregular"
             android:textSize="14sp"
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfprodisplayregular"
-                android:text="@string/linkAuthorization"
+                android:text="@string/link_authorization"
                 android:textColor="@color/Grey500"
                 android:textSize="14sp"/>
 

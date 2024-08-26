@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.detail.DetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/ivScreen"
@@ -65,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/addToFavourite"
+            android:text="@string/add_to_favourite"
             android:labelFor="@id/btnFavourite"
             android:textColor="@color/Grey300"
             android:textSize="12sp"
@@ -99,7 +100,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/sh_background_detail"
             android:layout_marginTop="324dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -143,6 +144,8 @@
                 android:id="@+id/layoutDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fadingEdge="vertical"
+                android:fadingEdgeLength="32dp"
                 android:layout_marginTop="48dp"
                 android:layout_marginHorizontal="24dp"
                 app:layout_constraintTop_toBottomOf="@id/tvInfo">
@@ -161,7 +164,7 @@
                 android:id="@+id/tvMoreDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/moreDescription"
+                android:text="@string/more_description"
                 android:textColor="@color/Red300"
                 android:textSize="14sp"
                 android:layout_marginTop="16dp"
@@ -230,40 +233,46 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <TextView
-                android:id="@+id/tvEpisodes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/episodes"
-                android:fontFamily="@font/sfprodisplaybold"
-                android:textColor="@color/Grey900"
-                android:textSize="16sp"
+            <RelativeLayout
+                android:id="@+id/layoutEpisodes"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="48dp"
-                android:layout_marginStart="24dp"
-                app:layout_constraintTop_toBottomOf="@id/tvProducer"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvProducer">
 
-            <TextView
-                android:id="@+id/tvTextEpisodes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/Grey400"
-                android:textSize="12sp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toBottomOf="@id/tvProducer"
-                app:layout_constraintEnd_toStartOf="@id/btnEpisodes"/>
+                <TextView
+                    android:id="@+id/tvEpisodes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfprodisplaybold"
+                    android:text="@string/episodes"
+                    android:textColor="@color/Grey900"
+                    android:textSize="16sp" />
 
-            <ImageButton
-                android:id="@+id/btnEpisodes"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintTop_toBottomOf="@id/tvProducer"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/ic_next"/>
+                <TextView
+                    android:id="@+id/tvTextEpisodes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="24dp"
+                    android:text="TextView"
+                    android:textColor="@color/Grey400"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@id/btnEpisodes" />
+
+                <ImageButton
+                    android:id="@+id/btnEpisodes"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/ic_next" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tvScreenshots"
@@ -276,7 +285,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvEpisodes"/>
+                app:layout_constraintTop_toBottomOf="@id/layoutEpisodes"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcScreenshots"

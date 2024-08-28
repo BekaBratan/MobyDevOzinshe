@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("androidx.navigation.safeargs.kotlin") version "2.7.7"
+    alias(libs.plugins.navigationSafeArgs)
 }
 
 android {
@@ -78,4 +78,7 @@ dependencies {
 
     // PhotoView
     implementation (libs.photoview)
+
+    // VideoView
+    implementation (libs.core)
 }

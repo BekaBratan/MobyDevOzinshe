@@ -100,6 +100,13 @@ class DetailFragment : Fragment() {
                     }
                 })
                 rcScreenshots.adapter = adapterScreenshot
+
+                btnPlay.setOnClickListener { click ->
+                    if (it.video != null) {
+                        findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToVideoFragment(it.video.link))
+                    } else {
+                    }
+                }
             }
         }
 

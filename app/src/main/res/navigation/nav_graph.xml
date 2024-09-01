@@ -119,6 +119,13 @@
                 android:name="videoLink"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_detailFragment_to_episodesFragment"
+            app:destination="@id/episodesFragment">
+            <argument
+                android:name="movieId"
+                app:argType="integer" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/imageFragment"
@@ -137,5 +144,21 @@
         <argument
             android:name="videoLink"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodesFragment"
+        android:name="com.example.mobydevozinshe.presentation.detail.EpisodesFragment"
+        android:label="fragment_episodes"
+        tools:layout="@layout/fragment_episodes">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_episodesFragment_to_videoFragment"
+            app:destination="@id/videoFragment">
+            <argument
+                android:name="videoLink"
+                app:argType="string" />
+        </action>
     </fragment>
 </navigation>

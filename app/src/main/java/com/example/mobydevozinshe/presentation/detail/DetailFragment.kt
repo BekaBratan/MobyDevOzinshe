@@ -86,7 +86,7 @@ class DetailFragment : Fragment() {
                 if (it.movieType == "SERIAL") {
                     tvTextEpisodes.text = "${it.seasonCount} сезон, ${it.seriesCount} серия"
                     layoutEpisodes.setOnClickListener {
-                        // navigate to episode fragment
+                        findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToEpisodesFragment(args.movieId))
                     }
                 } else {
                     layoutEpisodes.visibility = View.GONE
@@ -94,7 +94,7 @@ class DetailFragment : Fragment() {
 
                 val adapterScreenshot = ImageAdapter()
                 adapterScreenshot.submitList(it.screenshots)
-                adapterScreenshot.setOnImageClickListener(object : RcViewItemClickImageCallback {
+                adapterScreenshot.setOnImageClickListener(object : RcViewItemClickLinkCallback {
                     override fun onClick(link: String) {
                         findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToImageFragment(link)                        )
                     }
@@ -105,6 +105,7 @@ class DetailFragment : Fragment() {
                     if (it.video != null) {
                         findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToVideoFragment(it.video.link))
                     } else {
+                        findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToEpisodesFragment(args.movieId))
                     }
                 }
             }

@@ -1,5 +1,5 @@
 package com.example.mobydevozinshe.presentation.detail
 
-interface RcViewItemClickImageCallback {
+interface RcViewItemClickLinkCallback {
     fun onClick(link: String)
 }

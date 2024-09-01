@@ -6,6 +6,7 @@ import com.example.mobydevozinshe.data.model.AuthResponse
 import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponse
 import com.example.mobydevozinshe.data.model.MainMoviesResponse
 import com.example.mobydevozinshe.data.model.MoviesResponseItem
+import com.example.mobydevozinshe.data.model.SeasonsResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -38,4 +39,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): MoviesResponseItem
+
+    @GET("/core/V1/seasons/{id}")
+    suspend fun getSeasons(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): SeasonsResponse
 }

@@ -28,9 +28,6 @@ class CustomDividerItemDecoration(private val divider: Drawable): RecyclerView.I
             val dividerBottom = dividerTop + divider.intrinsicHeight
             divider.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom)
             divider.draw(canvas)
-
-            Log.d("Divider", "Position: $i, Top: $dividerTop, Bottom: $dividerBottom")
-
         }
     }
 }

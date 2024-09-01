@@ -1,6 +1,7 @@
 package com.example.mobydevozinshe.presentation.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
+import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.databinding.FragmentDetailBinding
 import com.example.mobydevozinshe.provideNavigationHost
 
@@ -19,6 +21,7 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private val args: DetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
+    private var favouriteState = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +52,14 @@ class DetailFragment : Fragment() {
                 Glide.with(requireContext())
                     .load(it.poster.link)
                     .into(ivScreen)
+
+                if (it.favorite) {
+                    favouriteState = true
+                    btnFavourite.setBackgroundResource(R.drawable.ic_bookmark_filled)
+                } else {
+                    favouriteState = false
+                    btnFavourite.setBackgroundResource(R.drawable.ic_bookmark_outline)
+                }
 
                 tvTitle.text = it.name
                 var addInfo = it.year.toString()
@@ -108,9 +119,29 @@ class DetailFragment : Fragment() {
                         findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToEpisodesFragment(args.movieId))
                     }
                 }
+
+                btnFavourite.setOnClickListener { click ->
+                    if (favouriteState) {
+                        viewModel.deleteFavourite(token, MovieIdModel(args.movieId))
+                    } else {
+                        viewModel.addFavourite(token, MovieIdModel(args.movieId))
+                    }
+                }
             }
         }
 
+        viewModel.favouriteState.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.btnFavourite.setBackgroundResource(R.drawable.ic_bookmark_filled)
+            } else {
+                binding.btnFavourite.setBackgroundResource(R.drawable.ic_bookmark_outline)
+            }
+            favouriteState = it
+        }
+
+        viewModel.errorResponse.observe(viewLifecycleOwner) {
+            Log.d("BBBB", it)
+        }
     }
 
 }

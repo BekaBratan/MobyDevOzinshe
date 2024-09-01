@@ -64,7 +64,7 @@ class VideoFragment : Fragment() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 val defaultPlayerUiController = DefaultPlayerUiController(videoPlayer, youTubePlayer)
                 defaultPlayerUiController.rootView.findViewById<View>(com.pierfrancescosoffritti.androidyoutubeplayer.R.id.drop_shadow_top).apply {
-                    setBackgroundColor(R.drawable.ic_cross)
+                    setBackgroundResource(R.drawable.ic_cross)
                     setPadding(24, 24, 24, 24)
                     updateLayoutParams {
                         width = 170
@@ -74,9 +74,10 @@ class VideoFragment : Fragment() {
                         findNavController().popBackStack()
                     }
                 }
-                videoPlayer.setCustomPlayerUi(defaultPlayerUiController.rootView)
                 defaultPlayerUiController.showYouTubeButton(false)
                 defaultPlayerUiController.showFullscreenButton(false)
+                defaultPlayerUiController.showVideoTitle(false)
+                videoPlayer.setCustomPlayerUi(defaultPlayerUiController.rootView)
                 defaultPlayerUiController.rootView.findViewById<com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBar>(com.pierfrancescosoffritti.androidyoutubeplayer.R.id.youtube_player_seekbar).apply {
                     setColor(resources.getColor(R.color.Red500, null))
                 }

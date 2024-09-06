@@ -73,21 +73,21 @@ class DetailFragment : Fragment() {
                 if (tvDescription.lineCount > 3) {
                     tvDescription.maxLines = 7
                     tvMoreDescription.text = getString(R.string.more_description)
-                    layoutDescription.setFadeEdges(false, false, true, false)
+                    llDescription.setFadeEdges(false, false, true, false)
                     tvMoreDescription.visibility = View.VISIBLE
                     tvMoreDescription.setOnClickListener {
                         if (tvDescription.maxLines < 8) {
                             tvDescription.maxLines = Int.MAX_VALUE
                             tvMoreDescription.text = getString(R.string.hide_description)
-                            layoutDescription.setFadeEdges(false, false, false, false)
+                            llDescription.setFadeEdges(false, false, false, false)
                         } else {
                             tvDescription.maxLines = 7
                             tvMoreDescription.text = getString(R.string.more_description)
-                            layoutDescription.setFadeEdges(false, false, true, false)
+                            llDescription.setFadeEdges(false, false, true, false)
                         }
                     }
                 } else {
-                    layoutDescription.setFadeEdges(false, false, false, false)
+                    llDescription.setFadeEdges(false, false, false, false)
                     tvMoreDescription.visibility = View.GONE
                 }
 
@@ -96,11 +96,11 @@ class DetailFragment : Fragment() {
 
                 if (it.movieType == "SERIAL") {
                     tvTextEpisodes.text = "${it.seasonCount} сезон, ${it.seriesCount} серия"
-                    layoutEpisodes.setOnClickListener {
+                    llEpisodes.setOnClickListener {
                         findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToEpisodesFragment(args.movieId))
                     }
                 } else {
-                    layoutEpisodes.visibility = View.GONE
+                    llEpisodes.visibility = View.GONE
                 }
 
                 val adapterScreenshot = ImageAdapter()

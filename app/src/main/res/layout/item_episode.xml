@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Title"
         android:textSize="14dp"
-        android:textColor="@color/Grey900"
+        android:textColor="?attr/colorPrimary"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgEpisode"/>

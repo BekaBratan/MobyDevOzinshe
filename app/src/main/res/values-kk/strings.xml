@@ -1,20 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">ÖZINŞE</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="next">Өткізу</string>
     <string name="welcomeMsg">ÖZINŞE-ге қош келдің!</string>
     <string name="firstScreen">Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары</string>
-    <string name="secondScreen">Кез келген құрылғыдан қара \n Сүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара</string>
-    <string name="thirdScreen">Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз</string>
+    <string name="secondScreen">"Кез келген құрылғыдан қара "</string>
+    <string name="thirdScreen">" Сүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара"</string>
     <string name="finish">Әрі қарай</string>
-    <string name="email" translatable="false">Email</string>
     <string name="Password1">Құпия сөз</string>
     <string name="Password2">Құпия сөзді қайталаңыз</string>
     <string name="signup">Тіркелу</string>
     <string name="signupInfo">Деректерді толтырыңыз</string>
     <string name="errorRegistration">Мұндай email-ы бар пайдаланушы тіркелген</string>
-    <string name="linkRegistration">Сізде аккаунт бар ма?\u0020</string>
+    <string name="linkRegistration">Сізде аккаунт бар ма?\\u0020</string>
     <string name="emailHint">Сіздің email</string>
     <string name="passwordHint">Сіздің құпия сөзіңіз</string>
     <string name="wrongFormat">Қате формат</string>
@@ -23,7 +20,7 @@
     <string name="error_authorization">Email немесе Құпия сөзіңіз қате</string>
     <string name="forgotPassword">Құпия сөзді ұмыттыңыз ба?</string>
     <string name="signin">Кіру</string>
-    <string name="link_authorization">Аккаунтыныз жоқ па?\u0020</string>
+    <string name="link_authorization">Аккаунтыныз жоқ па?\\u0020</string>
     <string name="or">Немесе</string>
     <string name="appleId">Apple ID-мен тіркеліңіз</string>
     <string name="google">Google-мен тіркеліңіз</string>
@@ -44,7 +41,4 @@
     <string name="language">Тіл</string>
     <string name="rules_and_regulations">Ережелер мен шарттар</string>
     <string name="dark_theme">Қараңғы режим</string>
-    <string name="english" translatable="false">English</string>
-    <string name="Kazakh" translatable="false">Қазақша</string>
-    <string name="russian" translatable="false">Руский</string>
 </resources>

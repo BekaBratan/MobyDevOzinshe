@@ -1,11 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.MobyDevOzinshe" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/Red300</item>
         <item name="android:fontFamily">@font/sfprodisplaymedium</item>
         <item name="android:textSize">16sp</item>
+        <item name="colorSwitchThumbNormal">@color/Grey200</item>
+        <item name="colorPrimary">@color/Grey900</item>
+        <item name="colorSecondary">@color/Grey800</item>
+        <item name="colorTertiary">@color/Grey500</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="colorOutline">@color/Grey300</item>
+        <item name="colorBackgroundFloating">@color/white</item>
+        <item name="colorSurface">@color/Grey300</item>
+        <item name="colorOutlineVariant">@color/Grey300</item>
+        <item name="colorSecondaryVariant">@color/Grey100</item>
     </style>
-
     <style name="Theme.MobyDevOzinshe" parent="Base.Theme.MobyDevOzinshe" />
 </resources>

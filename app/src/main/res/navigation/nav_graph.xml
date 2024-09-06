@@ -89,7 +89,7 @@
         tools:layout="@layout/fragment_favourite" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.mobydevozinshe.presentation.ProfileFragment"
+        android:name="com.example.mobydevozinshe.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment

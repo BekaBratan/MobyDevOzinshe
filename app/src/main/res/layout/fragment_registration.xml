@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnBackground"
     tools:context=".presentation.authorization.RegistrationFragment">
 
     <androidx.appcompat.widget.AppCompatButton
@@ -34,7 +35,7 @@
             android:text="@string/signup"
             android:fontFamily="@font/sfprodisplaybold"
             android:textSize="24sp"
-            android:textColor="@color/Grey900"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -42,7 +43,7 @@
             android:text="@string/signupInfo"
             android:fontFamily="@font/sfprodisplayregular"
             android:textSize="16sp"
-            android:textColor="@color/Grey500"/>
+            android:textColor="?attr/colorTertiary"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +63,7 @@
             android:labelFor="@+id/etEmail"
             android:fontFamily="@font/sfprodisplaybold"
             android:textSize="14sp"
-            android:textColor="@color/Grey900"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -104,7 +105,7 @@
             android:labelFor="@+id/etPassword1"
             android:fontFamily="@font/sfprodisplaybold"
             android:textSize="14sp"
-            android:textColor="@color/Grey900"
+            android:textColor="?attr/colorPrimary"
             android:layout_marginTop="16dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -138,7 +139,7 @@
             android:labelFor="@+id/etPassword2"
             android:fontFamily="@font/sfprodisplaybold"
             android:textSize="14sp"
-            android:textColor="@color/Grey900"
+            android:textColor="?attr/colorPrimary"
             android:layout_marginTop="16dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -202,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfprodisplayregular"
                 android:text="@string/linkRegistration"
-                android:textColor="@color/Grey500"
+                android:textColor="?attr/colorTertiary"
                 android:textSize="14sp"/>
 
             <TextView

@@ -41,4 +41,20 @@ class SharedProvider(private val context: Context) {
     fun isAuthorized(): Boolean {
         return preferences.getBoolean(is_authorized, false)
     }
+
+    fun saveLanguage(language: String) {
+        preferences.edit().putString("Language", language).apply()
+    }
+
+    fun getLanguage(): String {
+        return preferences.getString("Language", "kk").toString()
+    }
+
+    fun saveDarkTheme(isDark: Boolean) {
+        preferences.edit().putBoolean("DarkTheme", isDark).apply()
+    }
+
+    fun getDarkTheme(): Boolean {
+        return preferences.getBoolean("DarkTheme", false)
+    }
 }

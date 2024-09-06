@@ -81,4 +81,7 @@ dependencies {
 
     // VideoView
     implementation (libs.core)
+
+    // SwitchButton
+    implementation (libs.library)
 }

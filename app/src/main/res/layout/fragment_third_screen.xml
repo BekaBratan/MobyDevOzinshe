@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorOnBackground"
     tools:context=".presentation.onboarding.screens.ThirdScreen">
 
     <ImageView
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/welcomeMsg"
         android:textAlignment="center"
-        android:textColor="@color/Grey900"
+        android:textColor="?attr/colorPrimary"
         android:textSize="24dp"
         android:fontFamily="@font/sfprodisplaybold"
         android:textStyle="bold"
@@ -54,7 +55,7 @@
         android:fontFamily="@font/sfprodisplaymedium"
         android:text="@string/thirdScreen"
         android:textAlignment="center"
-        android:textColor="@color/Grey500"
+        android:textColor="?attr/colorTertiary"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"

@@ -1,12 +1,14 @@
 package com.example.mobydevozinshe.presentation.profile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.data.model.UserProfileRequest
@@ -30,18 +32,18 @@ class EditProfileFragment : Fragment() {
 
         viewModel.userResponseItem.observe(viewLifecycleOwner) {
             binding.run {
-                toolbar.title.text = "Nice"
-                etUsername.setText(it.name)
+                toolbar.title.text = R.string.personal_info.toString()
+                etUsername.setText(it.name?:"")
                 etEmail.setText(SharedProvider(requireContext()).getEmail())
-                etPhone.setText(it.phoneNumber.toString())
-                SharedProvider(requireContext()).saveBirthday(it.birthDate)
-                etBirthday.setText(it.birthDate.toString())
+                etPhone.setText(it.phoneNumber.toString()?:"")
+                SharedProvider(requireContext()).saveBirthday(it.birthDate?: "")
+                etBirthday.setText(it.birthDate.toString()?:"")
                 SharedProvider(requireContext()).saveID(it.id)
             }
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            binding.toolbar.title.text = "Error"
+            binding.toolbar.title.text = R.string.errorConnection.toString()
         }
         binding.run {
             toolbar.backButton.setOnClickListener {
@@ -56,10 +58,19 @@ class EditProfileFragment : Fragment() {
                         SharedProvider(requireContext()).getBirthday(),
                         SharedProvider(requireContext()).getID(),
                         SharedProvider(requireContext()).getLanguage(),
-                        etUsername.text.toString(),
-                        etPhone.text.toString()
+                        binding.etUsername.text.toString(),
+                        binding.etPhone.text.toString()
                     )
                 )
+
+                viewModel.userRequestItem.observe(viewLifecycleOwner) {
+                    findNavController().navigateUp()
+                }
+
+                viewModel.errorResponse.observe(viewLifecycleOwner) {
+                    binding.toolbar.title.text = R.string.errorConnection.toString()
+                    Log.d("BBBB", "onViewCreated: $it")
+                }
             }
         }
     }

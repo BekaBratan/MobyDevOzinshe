@@ -68,7 +68,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): UserProfileResponse
 
-    @HTTP(method = "PUT", path = "/core/V1/user/profile", hasBody = true)
+    @HTTP(method = "PUT", path = "/core/V1/user/profile/", hasBody = true)
     suspend fun updateUserProfile(
         @Header("Authorization") token: String,
         @Body userProfile: UserProfileRequest

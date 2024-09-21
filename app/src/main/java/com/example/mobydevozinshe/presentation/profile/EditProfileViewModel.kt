@@ -12,6 +12,9 @@ class EditProfileViewModel: ViewModel() {
     private var _userResponseItem: MutableLiveData<UserProfileResponse> = MutableLiveData()
     val userResponseItem: MutableLiveData<UserProfileResponse> = _userResponseItem
 
+    private var _userRequestItem: MutableLiveData<UserProfileResponse> = MutableLiveData()
+    val userRequestItem: MutableLiveData<UserProfileResponse> = _userRequestItem
+
     private var _errorResponse: MutableLiveData<String> = MutableLiveData()
     val errorResponse: MutableLiveData<String> = _errorResponse
 
@@ -26,7 +29,7 @@ class EditProfileViewModel: ViewModel() {
     fun updateUser(token: String, userRequestItem: UserProfileRequest) {
         viewModelScope.launch {
             runCatching { ServiceBuilder.api.updateUserProfile(token, userRequestItem) }
-                .onSuccess { _userResponseItem.postValue(it) }
+                .onSuccess { _userRequestItem.postValue(it) }
                 .onFailure { _errorResponse.postValue(it.message) }
         }
     }

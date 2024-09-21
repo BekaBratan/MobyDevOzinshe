@@ -41,4 +41,25 @@
     <string name="language">Тіл</string>
     <string name="rules_and_regulations">Ережелер мен шарттар</string>
     <string name="dark_theme">Қараңғы режим</string>
+    <string name="exit">Шығу</string>
+    <string name="sureToExit">"Сіз шынымен аккаунтыңыздан "</string>
+    <string name="yesExit">Иә, шығу</string>
+    <string name="no">Жоқ</string>
+    <string name="yourName">Сіздің атыңыз</string>
+    <string name="phone">Телефон</string>
+    <string name="birthday">Туылған күні</string>
+    <string name="saveChanges">Өзгерістерді сақтау</string>
+    <string name="errorConnection">Қосфлу қателігі</string>
+    <string name="january">қаңтар</string>
+    <string name="february">ақпан</string>
+    <string name="march">наурыз</string>
+    <string name="april">сәуір</string>
+    <string name="may">мамыр</string>
+    <string name="june">маусым</string>
+    <string name="july">шілде</string>
+    <string name="august">тамыз</string>
+    <string name="september">қыркүйек</string>
+    <string name="october">қазан</string>
+    <string name="november">қараша</string>
+    <string name="december">желтоқсан</string>
 </resources>

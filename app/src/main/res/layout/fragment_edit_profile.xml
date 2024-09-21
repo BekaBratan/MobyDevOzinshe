@@ -135,13 +135,14 @@
                 android:labelFor="@+id/etBirthday"
                 android:text="@string/birthday"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/etBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorPrimary"
                 android:background="?attr/colorOnBackground"
                 android:paddingTop="8dp"
+                android:textAllCaps="false"
                 android:paddingHorizontal="0dp"
                 android:paddingBottom="12dp"/>
 

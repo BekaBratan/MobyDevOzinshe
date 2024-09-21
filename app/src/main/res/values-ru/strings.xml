@@ -10,7 +10,7 @@
     <string name="Password2">Повторите пороль</string>
     <string name="signup">Регистрация</string>
     <string name="signupInfo">Заполните данные</string>
-        <string name="errorRegistration">Зарегистрирован пользователь с таким email</string>
+    <string name="errorRegistration">Зарегистрирован пользователь с таким email</string>
     <string name="linkRegistration">У вас есть аккаунт?\\u0020</string>
     <string name="emailHint">Ваш email</string>
     <string name="passwordHint">Ваш пороль</string>
@@ -41,4 +41,26 @@
     <string name="language">Язык</string>
     <string name="rules_and_regulations">Правила и условия</string>
     <string name="dark_theme">Темная тема</string>
+    <string name="exit">Выйти</string>
+    <string name="sureToExit">"Вы дейтвительно хотите "</string>
+    <string name="yesExit">Да, выйти</string>
+    <string name="no">Нет</string>
+    <string name="yourName">Ваше имя</string>
+    <string name="phone">Телефон</string>
+    <string name="birthday">День рождения</string>
+    <string name="saveChanges">Сохранить изменении</string>
+    <string name="errorConnection">Ошика подключении</string>
+
+    <string name="january">январь</string>
+    <string name="february">февраль</string>
+    <string name="march">март</string>
+    <string name="april">апрель</string>
+    <string name="may">май</string>
+    <string name="june">июнь</string>
+    <string name="july">июль</string>
+    <string name="august">август</string>
+    <string name="september">сентябрь</string>
+    <string name="october">октябрь</string>
+    <string name="november">ноябрь</string>
+    <string name="december">декабрь</string>
 </resources>

@@ -41,4 +41,26 @@
     <string name="language">Language</string>
     <string name="rules_and_regulations">Rules and regulations</string>
     <string name="dark_theme">Dark theme</string>
+    <string name="exit">Logout</string>
+    <string name="sureToExit">Are you sure?</string>
+    <string name="yesExit">Yes, logout</string>
+    <string name="no">No</string>
+    <string name="yourName">Your name</string>
+    <string name="phone">Phone number</string>
+    <string name="birthday">Birthdate</string>
+    <string name="saveChanges">Save changes</string>
+    <string name="errorConnection">Conneection error</string>
+
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
 </resources>

@@ -56,4 +56,17 @@
     <string name="birthday">Туылған күні</string>
     <string name="saveChanges">Өзгерістерді сақтау</string>
     <string name="errorConnection">Қосфлу қателігі</string>
+
+    <string name="january">қаңтар</string>
+    <string name="february">ақпан</string>
+    <string name="march">наурыз</string>
+    <string name="april">сәуір</string>
+    <string name="may">мамыр</string>
+    <string name="june">маусым</string>
+    <string name="july">шілде</string>
+    <string name="august">тамыз</string>
+    <string name="september">қыркүйек</string>
+    <string name="october">қазан</string>
+    <string name="november">қараша</string>
+    <string name="december">желтоқсан</string>
 </resources>

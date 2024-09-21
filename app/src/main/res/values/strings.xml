@@ -47,4 +47,13 @@
     <string name="english" translatable="false">English</string>
     <string name="Kazakh" translatable="false">Қазақша</string>
     <string name="russian" translatable="false">Руский</string>
+    <string name="exit">Шығу</string>
+    <string name="sureToExit">"Сіз шынымен аккаунтыңыздан "</string>
+    <string name="yesExit">Иә, шығу</string>
+    <string name="no">Жоқ</string>
+    <string name="yourName">Сіздің атыңыз</string>
+    <string name="phone">Телефон</string>
+    <string name="birthday">Туылған күні</string>
+    <string name="saveChanges">Өзгерістерді сақтау</string>
+    <string name="errorConnection">Қосфлу қателігі</string>
 </resources>

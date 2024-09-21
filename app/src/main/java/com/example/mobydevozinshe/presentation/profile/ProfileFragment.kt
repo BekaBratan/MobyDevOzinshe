@@ -3,13 +3,15 @@ package com.example.mobydevozinshe.presentation.profile
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentProfileBinding
@@ -49,6 +51,7 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
         viewModel.language.observe(viewLifecycleOwner) {
             binding.tvLanguage.text = it
         }
+
         binding.llLanguage.setOnClickListener {
             val bottomsheet = SelectedLanguageBottomsheet()
             bottomsheet.setOnLanguageSelectedListener(this)
@@ -56,6 +59,8 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
         }
 
         binding.run {
+            tvEmail.text = SharedProvider(requireContext()).getEmail()
+
             switchDarkTheme.isChecked = SharedProvider(requireContext()).getDarkTheme()
             switchDarkTheme.setOnCheckedChangeListener { _, isCheked ->
                 SharedProvider(requireContext()).saveDarkTheme(isCheked)
@@ -64,6 +69,19 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
                     else AppCompatDelegate.MODE_NIGHT_NO
                 )
                 requireActivity().recreate()
+            }
+
+            toolbar.backButton.setOnClickListener {
+                findNavController().navigateUp()
+            }
+
+            toolbar.exitButton.setOnClickListener {
+                val bottomsheet = ExitBottomsheet()
+                bottomsheet.show(childFragmentManager, bottomsheet.tag)
+            }
+
+            llPersonalInfo.setOnClickListener {
+                findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
             }
         }
     }

@@ -8,11 +8,14 @@ import com.example.mobydevozinshe.data.model.MainMoviesResponse
 import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.data.model.MoviesResponseItem
 import com.example.mobydevozinshe.data.model.SeasonsResponse
+import com.example.mobydevozinshe.data.model.UserProfileRequest
+import com.example.mobydevozinshe.data.model.UserProfileResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.HTTP
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
@@ -59,4 +62,16 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body movieBody: MovieIdModel
     ): Unit
+
+    @GET("/core/V1/user/profile")
+    suspend fun getUserProfile(
+        @Header("Authorization") token: String
+    ): UserProfileResponse
+
+    @HTTP(method = "PUT", path = "/core/V1/user/profile", hasBody = true)
+    suspend fun updateUserProfile(
+        @Header("Authorization") token: String,
+        @Body userProfile: UserProfileRequest
+    ): UserProfileResponse
+
 }

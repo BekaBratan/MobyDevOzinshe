@@ -91,7 +91,16 @@
         android:id="@+id/profileFragment"
         android:name="com.example.mobydevozinshe.presentation.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.mobydevozinshe.presentation.SearchFragment"
@@ -161,4 +170,9 @@
                 app:argType="string" />
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.mobydevozinshe.presentation.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

@@ -57,4 +57,28 @@ class SharedProvider(private val context: Context) {
     fun getDarkTheme(): Boolean {
         return preferences.getBoolean("DarkTheme", false)
     }
+
+    fun getEmail(): String {
+        return preferences.getString(("Email"), "no email").toString()
+    }
+
+    fun saveEmail(email: String) {
+        preferences.edit().putString("Email", email).apply()
+    }
+
+    fun getID(): Int {
+        return preferences.getInt(("ID"), 0)
+    }
+
+    fun saveID(id: Int) {
+        preferences.edit().putInt("ID", id).apply()
+    }
+
+    fun getBirthday(): Any {
+        return preferences.getString("Birthday", "no birthday").toString()
+    }
+
+    fun saveBirthday(birthday: Any) {
+        preferences.edit().putString("Birthday", birthday.toString()).apply()
+    }
 }

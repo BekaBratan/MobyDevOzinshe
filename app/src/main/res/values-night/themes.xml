@@ -10,5 +10,6 @@
         <item name="colorSurface">@color/Grey600</item>
         <item name="colorOutlineVariant">@color/Grey700</item>
         <item name="colorSecondaryVariant">@color/Grey800</item>
+        <item name="colorButtonNormal">@color/Red300</item>
     </style>
 </resources>

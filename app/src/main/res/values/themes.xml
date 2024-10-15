@@ -12,6 +12,7 @@
         <item name="colorSurface">@color/Grey300</item>
         <item name="colorOutlineVariant">@color/Grey300</item>
         <item name="colorSecondaryVariant">@color/Grey100</item>
+        <item name="colorOnSecondary">@color/Red50</item>
         <item name="colorButtonNormal">@color/Red600</item>
     </style>
     <style name="Theme.MobyDevOzinshe" parent="Base.Theme.MobyDevOzinshe" />

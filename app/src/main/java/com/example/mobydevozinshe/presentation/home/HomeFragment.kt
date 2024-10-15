@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.presentation.home.adapter.MainMoviesAdapter
 import com.example.mobydevozinshe.databinding.FragmentHomeBinding
+import com.example.mobydevozinshe.presentation.home.adapter.CategoryAgesAdapter
+import com.example.mobydevozinshe.presentation.home.adapter.GenreAdapter
 import com.example.mobydevozinshe.presentation.home.adapter.MainCategoryMoviesAdapter
-import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickMainMoviesCallback
+import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.provideNavigationHost
 
 class HomeFragment : Fragment() {
@@ -41,7 +43,7 @@ class HomeFragment : Fragment() {
 
         val adapterMainMovies = MainMoviesAdapter()
         binding.rcMainMovies.adapter = adapterMainMovies
-        adapterMainMovies.setOnMovieClickListener(object: RcViewItemClickMainMoviesCallback{
+        adapterMainMovies.setOnMovieClickListener(object: RcViewItemClickIdCallback{
             override fun onClick(movieId: Int) {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
             }
@@ -51,15 +53,77 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.getMainCategoryMovies(token)
-        val adapterMainCategoryMovies = MainCategoryMoviesAdapter()
-        adapterMainCategoryMovies.setOnMovieClickListener(object: RcViewItemClickMainMoviesCallback{
+        viewModel.getGenres(token)
+        viewModel.getCategoryAges(token)
+
+        viewModel.genresResponse.observe(viewLifecycleOwner) {
+            val adapterGenres = GenreAdapter()
+            adapterGenres.setOnGenreClickListener(object: RcViewItemClickIdCallback{
+                override fun onClick(movieId: Int) {
+                    // findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGenreFragment(movieId))
+                }
+            })
+            binding.rcGenres.adapter = adapterGenres
+            adapterGenres.submitList(it)
+        }
+
+        viewModel.categoryAgesResponse.observe(viewLifecycleOwner) {
+            val adapterCategoryAges = CategoryAgesAdapter()
+            adapterCategoryAges.setOnCategoryAgesClickListener(object: RcViewItemClickIdCallback{
+                override fun onClick(movieId: Int) {
+                    // findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryAgesFragment(movieId))
+                }
+            })
+            binding.rcCategoryAges.adapter = adapterCategoryAges
+            adapterCategoryAges.submitList(it)
+        }
+
+        val adapterMainCategoryMovies1 = MainCategoryMoviesAdapter()
+        adapterMainCategoryMovies1.setOnMovieClickListener(object: RcViewItemClickIdCallback{
             override fun onClick(movieId: Int) {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
             }
         })
-        binding.rcMainCategoryMovies.adapter = adapterMainCategoryMovies
+        binding.rcMainCategoryMovies1.adapter = adapterMainCategoryMovies1
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
-            adapterMainCategoryMovies.submitList(it[0].movies)
+            adapterMainCategoryMovies1.submitList(it[0].movies)
+            binding.tvCategoryName1.text = it[0].categoryName
+        }
+
+        val adapterMainCategoryMovies2 = MainCategoryMoviesAdapter()
+        adapterMainCategoryMovies2.setOnMovieClickListener(object: RcViewItemClickIdCallback{
+            override fun onClick(movieId: Int) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
+            }
+        })
+        binding.rcMainCategoryMovies2.adapter = adapterMainCategoryMovies2
+        viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
+            adapterMainCategoryMovies2.submitList(it[1].movies)
+            binding.tvCategoryName2.text = it[1].categoryName
+        }
+
+        val adapterMainCategoryMovies3 = MainCategoryMoviesAdapter()
+        adapterMainCategoryMovies3.setOnMovieClickListener(object: RcViewItemClickIdCallback{
+            override fun onClick(movieId: Int) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
+            }
+        })
+        binding.rcMainCategoryMovies3.adapter = adapterMainCategoryMovies3
+        viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
+            adapterMainCategoryMovies3.submitList(it[2].movies)
+            binding.tvCategoryName3.text = it[2].categoryName
+        }
+
+        val adapterMainCategoryMovies4 = MainCategoryMoviesAdapter()
+        adapterMainCategoryMovies4.setOnMovieClickListener(object: RcViewItemClickIdCallback{
+            override fun onClick(movieId: Int) {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId))
+            }
+        })
+        binding.rcMainCategoryMovies4.adapter = adapterMainCategoryMovies4
+        viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
+            adapterMainCategoryMovies4.submitList(it[3].movies)
+            binding.tvCategoryName4.text = it[3].categoryName
         }
     }
 }

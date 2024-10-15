@@ -1,4 +1,4 @@
-package com.example.mobydevozinshe.presentation
+package com.example.mobydevozinshe.presentation.favourite
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

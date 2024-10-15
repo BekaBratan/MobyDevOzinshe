@@ -35,11 +35,11 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
         provideNavigationHost()?.apply {
             setNavigationVisability(true)
         }
+        binding.switchDarkTheme.isChecked = SharedProvider(requireContext()).getDarkTheme()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        systemLanguage()
 
         // Recreate fragment to avoid blinking while changing language
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
@@ -61,7 +61,6 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
         binding.run {
             tvEmail.text = SharedProvider(requireContext()).getEmail()
 
-            switchDarkTheme.isChecked = SharedProvider(requireContext()).getDarkTheme()
             switchDarkTheme.setOnCheckedChangeListener { _, isCheked ->
                 SharedProvider(requireContext()).saveDarkTheme(isCheked)
                 AppCompatDelegate.setDefaultNightMode(
@@ -74,6 +73,8 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
             toolbar.backButton.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+            toolbar.title.text = getString(R.string.profile)
 
             toolbar.exitButton.setOnClickListener {
                 val bottomsheet = ExitBottomsheet()
@@ -88,42 +89,5 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
 
     override fun onLanguageSelected(language: String) {
         viewModel.selectLanguage(language)
-    }
-
-    private fun systemLanguage() {
-        when(SharedProvider(requireContext()).getLanguage()){
-            "en" -> {
-                val locale = Locale("en")
-                Locale.setDefault(locale)
-                val config = Configuration()
-                config.setLocale(locale)
-                requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
-                binding.tvLanguage.text = "English"
-            }
-            "kk" -> {
-                val locale = Locale("kk")
-                Locale.setDefault(locale)
-                val config = Configuration()
-                config.setLocale(locale)
-                requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
-                binding.tvLanguage.text = "Қазақша"
-            }
-            "ru" -> {
-                val locale = Locale("ru")
-                Locale.setDefault(locale)
-                val config = Configuration()
-                config.setLocale(locale)
-                requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
-                binding.tvLanguage.text = "Русский"
-            }
-            else -> {
-                val locale = Locale("kk")
-                Locale.setDefault(locale)
-                val config = Configuration()
-                config.setLocale(locale)
-                requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
-                binding.tvLanguage.text = "Қазақша"
-            }
-        }
     }
 }

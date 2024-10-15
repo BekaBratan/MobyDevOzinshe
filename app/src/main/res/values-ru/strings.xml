@@ -63,4 +63,8 @@
     <string name="october">октябрь</string>
     <string name="november">ноябрь</string>
     <string name="december">декабрь</string>
+    <string name="profile">Профиль</string>
+    <string name="chooseGenre">Выберите жанр</string>
+    <string name="chooseAges">На возраст</string>
+    <string name="languageValue">Руский</string>
 </resources>

@@ -1,11 +1,13 @@
 package com.example.mobydevozinshe.data.api
 
+import com.example.mobydevozinshe.data.model.CategoryAgesResponse
 import com.example.mobydevozinshe.data.model.Auth
-import com.example.mobydevozinshe.data.model.MoviesResponse
 import com.example.mobydevozinshe.data.model.AuthResponse
+import com.example.mobydevozinshe.data.model.GenreResponse
 import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponse
 import com.example.mobydevozinshe.data.model.MainMoviesResponse
 import com.example.mobydevozinshe.data.model.MovieIdModel
+import com.example.mobydevozinshe.data.model.MoviesPageResponse
 import com.example.mobydevozinshe.data.model.MoviesResponseItem
 import com.example.mobydevozinshe.data.model.SeasonsResponse
 import com.example.mobydevozinshe.data.model.UserProfileRequest
@@ -15,8 +17,8 @@ import retrofit2.http.GET
 import retrofit2.http.HTTP
 import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @POST("/auth/V1/signup")
@@ -73,5 +75,25 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body userProfile: UserProfileRequest
     ): UserProfileResponse
+
+    @GET("/core/V1/movies/page")
+    suspend fun getGenrePage(
+        @Header("Authorization") token: String,
+        @Query("genreId") genreId: Int,
+        @Query("direction") direction: String = "DESC",
+        @Query("page") page: Int = 0,
+        @Query("size") size: Int = 20,
+        @Query("sortField") sortField: String = "createdDate"
+    ): MoviesPageResponse
+
+    @GET("/core/V1/genres")
+    suspend fun getGenres(
+        @Header("Authorization") token: String
+    ): GenreResponse
+
+    @GET("/core/V1/category-ages")
+    suspend fun getCategoryAges(
+        @Header("Authorization") token: String
+    ): CategoryAgesResponse
 
 }

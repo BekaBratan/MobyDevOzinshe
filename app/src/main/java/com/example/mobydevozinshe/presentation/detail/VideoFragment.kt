@@ -19,6 +19,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.You
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.loadOrCueVideo
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBar
 import kotlinx.coroutines.launch
 
 class VideoFragment : Fragment() {
@@ -78,7 +79,7 @@ class VideoFragment : Fragment() {
                 defaultPlayerUiController.showFullscreenButton(false)
                 defaultPlayerUiController.showVideoTitle(false)
                 videoPlayer.setCustomPlayerUi(defaultPlayerUiController.rootView)
-                defaultPlayerUiController.rootView.findViewById<com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.views.YouTubePlayerSeekBar>(com.pierfrancescosoffritti.androidyoutubeplayer.R.id.youtube_player_seekbar).apply {
+                defaultPlayerUiController.rootView.findViewById<YouTubePlayerSeekBar>(com.pierfrancescosoffritti.androidyoutubeplayer.R.id.youtube_player_seekbar).apply {
                     setColor(resources.getColor(R.color.Red500, null))
                 }
                 youTubePlayer.loadOrCueVideo(lifecycle, link, 0f)

@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
-        android:name="com.example.mobydevozinshe.presentation.FavouriteFragment"
+        android:name="com.example.mobydevozinshe.presentation.favourite.FavouriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment

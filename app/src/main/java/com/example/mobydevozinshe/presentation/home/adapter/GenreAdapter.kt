@@ -6,22 +6,22 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.mobydevozinshe.data.model.MainMoviesResponseItem
-import com.example.mobydevozinshe.databinding.ItemMainMoviesBinding
+import com.example.mobydevozinshe.data.model.GenreResponseItem
+import com.example.mobydevozinshe.databinding.ItemCardBinding
 
-class MainMoviesAdapter: RecyclerView.Adapter<MainMoviesAdapter.MyViewHolder>() {
+class GenreAdapter: RecyclerView.Adapter<GenreAdapter.MyViewHolder>() {
 
-    private val diffCallback = object : DiffUtil.ItemCallback<MainMoviesResponseItem>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<GenreResponseItem>() {
         override fun areItemsTheSame(
-            oldItem: MainMoviesResponseItem,
-            newItem: MainMoviesResponseItem
+            oldItem: GenreResponseItem,
+            newItem: GenreResponseItem
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: MainMoviesResponseItem,
-            newItem: MainMoviesResponseItem
+            oldItem: GenreResponseItem,
+            newItem: GenreResponseItem
         ): Boolean {
             return oldItem == newItem
         }
@@ -29,32 +29,30 @@ class MainMoviesAdapter: RecyclerView.Adapter<MainMoviesAdapter.MyViewHolder>() 
     }
     private val differ = AsyncListDiffer(this, diffCallback)
 
-    fun submitList(list: List<MainMoviesResponseItem>){
+    fun submitList(list: List<GenreResponseItem>){
         differ.submitList(list)
     }
 
     private var listenerClickAtItem: RcViewItemClickIdCallback? = null
-    fun setOnMovieClickListener(listener: RcViewItemClickIdCallback) {
+    fun setOnGenreClickListener(listener: RcViewItemClickIdCallback) {
         this.listenerClickAtItem = listener
     }
 
-    inner class MyViewHolder(private var binding: ItemMainMoviesBinding): RecyclerView.ViewHolder(binding.root){
-        fun onBind(item: MainMoviesResponseItem){
-            binding.tvName.text = item.movie.name
-            binding.tvCategory.text = item.movie.categories[0].name
-            binding.tvDescription.text = item.movie.description
+    inner class MyViewHolder(private var binding: ItemCardBinding): RecyclerView.ViewHolder(binding.root){
+        fun onBind(item: GenreResponseItem){
+            binding.tvCard.text = item.name
             Glide.with(itemView.context)
-                .load(item.movie.poster.link)
-                .into(binding.ivScreen)
+                .load(item.link)
+                .into(binding.imgCard)
             itemView.setOnClickListener {
-                listenerClickAtItem?.onClick(item.movie.id)
+                listenerClickAtItem?.onClick(item.id)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemMainMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

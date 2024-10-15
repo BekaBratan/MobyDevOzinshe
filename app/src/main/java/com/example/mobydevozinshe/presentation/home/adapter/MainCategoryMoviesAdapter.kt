@@ -33,8 +33,8 @@ class MainCategoryMoviesAdapter: RecyclerView.Adapter<MainCategoryMoviesAdapter.
         differ.submitList(list)
     }
 
-    private var listenerClickAtItem: RcViewItemClickMainMoviesCallback? = null
-    fun setOnMovieClickListener(listener: RcViewItemClickMainMoviesCallback) {
+    private var listenerClickAtItem: RcViewItemClickIdCallback? = null
+    fun setOnMovieClickListener(listener: RcViewItemClickIdCallback) {
         this.listenerClickAtItem = listener
     }
 

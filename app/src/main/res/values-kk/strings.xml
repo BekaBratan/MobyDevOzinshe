@@ -62,4 +62,8 @@
     <string name="october">қазан</string>
     <string name="november">қараша</string>
     <string name="december">желтоқсан</string>
+    <string name="profile">Профиль</string>
+    <string name="chooseGenre">Жанрды таңдаңыз</string>
+    <string name="chooseAges">Жасына сәйкес</string>
+    <string name="languageValue">Қазақша</string>
 </resources>

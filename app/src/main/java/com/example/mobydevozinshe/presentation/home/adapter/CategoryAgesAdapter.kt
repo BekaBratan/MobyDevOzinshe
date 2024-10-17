@@ -33,8 +33,8 @@ class CategoryAgesAdapter: RecyclerView.Adapter<CategoryAgesAdapter.MyViewHolder
         differ.submitList(list)
     }
 
-    private var listenerClickAtItem: RcViewItemClickIdCallback? = null
-    fun setOnCategoryAgesClickListener(listener: RcViewItemClickIdCallback) {
+    private var listenerClickAtItem: RcViewItemClickCategoryCallback? = null
+    fun setOnCategoryAgesClickListener(listener: RcViewItemClickCategoryCallback) {
         this.listenerClickAtItem = listener
     }
 
@@ -45,7 +45,7 @@ class CategoryAgesAdapter: RecyclerView.Adapter<CategoryAgesAdapter.MyViewHolder
                 .load(item.link)
                 .into(binding.ivCard)
             itemView.setOnClickListener {
-                listenerClickAtItem?.onClick(item.id)
+                listenerClickAtItem?.onClick(item.id, item.name)
             }
         }
     }

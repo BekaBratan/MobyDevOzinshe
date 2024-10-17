@@ -1,7 +1,7 @@
 package com.example.mobydevozinshe.data.model
 
 data class MoviesPageResponse(
-    val content: List<Content>,
+    val content: List<MoviesResponseItem>,
     val empty: Boolean,
     val first: Boolean,
     val last: Boolean,

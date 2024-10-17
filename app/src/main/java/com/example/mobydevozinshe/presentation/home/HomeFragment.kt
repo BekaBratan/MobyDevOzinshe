@@ -13,6 +13,7 @@ import com.example.mobydevozinshe.databinding.FragmentHomeBinding
 import com.example.mobydevozinshe.presentation.home.adapter.CategoryAgesAdapter
 import com.example.mobydevozinshe.presentation.home.adapter.GenreAdapter
 import com.example.mobydevozinshe.presentation.home.adapter.MainCategoryMoviesAdapter
+import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickCategoryCallback
 import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.provideNavigationHost
 
@@ -58,9 +59,9 @@ class HomeFragment : Fragment() {
 
         viewModel.genresResponse.observe(viewLifecycleOwner) {
             val adapterGenres = GenreAdapter()
-            adapterGenres.setOnGenreClickListener(object: RcViewItemClickIdCallback{
-                override fun onClick(movieId: Int) {
-                     findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(movieId, "genre"))
+            adapterGenres.setOnGenreClickListener(object: RcViewItemClickCategoryCallback{
+                override fun onClick(categoryId: Int, categoryName: String) {
+                     findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "genre", categoryName))
                 }
             })
             binding.rcGenres.adapter = adapterGenres
@@ -69,9 +70,10 @@ class HomeFragment : Fragment() {
 
         viewModel.categoryAgesResponse.observe(viewLifecycleOwner) {
             val adapterCategoryAges = CategoryAgesAdapter()
-            adapterCategoryAges.setOnCategoryAgesClickListener(object: RcViewItemClickIdCallback{
-                override fun onClick(movieId: Int) {
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(movieId, "ageCategory"))
+            adapterCategoryAges.setOnCategoryAgesClickListener(object:
+                RcViewItemClickCategoryCallback {
+                override fun onClick(categoryId: Int, categoryName: String) {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "ageCategory", categoryName))
                 }
             })
             binding.rcCategoryAges.adapter = adapterCategoryAges
@@ -87,10 +89,11 @@ class HomeFragment : Fragment() {
         binding.rcMainCategoryMovies1.adapter = adapterMainCategoryMovies1
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies1.submitList(it[0].movies)
-            binding.tvCategoryName1.text = it[0].categoryName
+            val categoryName = it[0].categoryName
+            binding.tvCategoryName1.text = categoryName
             val categoryId = it[0].categoryId
             binding.llCategoryName1.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category", categoryName))
 
             }
         }
@@ -104,10 +107,11 @@ class HomeFragment : Fragment() {
         binding.rcMainCategoryMovies2.adapter = adapterMainCategoryMovies2
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies2.submitList(it[1].movies)
-            binding.tvCategoryName2.text = it[1].categoryName
+            val categoryName = it[1].categoryName
+            binding.tvCategoryName2.text = categoryName
             val categoryId = it[1].categoryId
             binding.llCategoryName2.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category", categoryName))
 
             }
         }
@@ -121,10 +125,11 @@ class HomeFragment : Fragment() {
         binding.rcMainCategoryMovies3.adapter = adapterMainCategoryMovies3
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies3.submitList(it[2].movies)
-            binding.tvCategoryName3.text = it[2].categoryName
+            val categoryName = it[2].categoryName
+            binding.tvCategoryName3.text = categoryName
             val categoryId = it[2].categoryId
             binding.llCategoryName3.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category", categoryName))
 
             }
         }
@@ -138,10 +143,11 @@ class HomeFragment : Fragment() {
         binding.rcMainCategoryMovies4.adapter = adapterMainCategoryMovies4
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies4.submitList(it[3].movies)
-            binding.tvCategoryName4.text = it[3].categoryName
+            val categoryName = it[3].categoryName
+            binding.tvCategoryName4.text = categoryName
             val categoryId = it[3].categoryId
             binding.llCategoryName4.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category", categoryName))
 
             }
         }

@@ -7,11 +7,13 @@ import com.example.mobydevozinshe.data.model.ChangePasswordRequest
 import com.example.mobydevozinshe.data.model.FavouriteMoviesResponse
 import com.example.mobydevozinshe.data.model.GenreResponse
 import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponse
+import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponseItem
 import com.example.mobydevozinshe.data.model.MainMoviesResponse
 import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.data.model.MoviesPageResponse
 import com.example.mobydevozinshe.data.model.MoviesResponseItem
 import com.example.mobydevozinshe.data.model.SeasonsResponse
+import com.example.mobydevozinshe.data.model.SimilarMoviesResponse
 import com.example.mobydevozinshe.data.model.UserProfileRequest
 import com.example.mobydevozinshe.data.model.UserProfileResponse
 import retrofit2.http.Body
@@ -128,4 +130,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body newPassword: ChangePasswordRequest
     ): AuthResponse
+
+    @GET("/core/V1/movies/similar/{id}")
+    suspend fun getSimilarMoviesList(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): SimilarMoviesResponse
 }

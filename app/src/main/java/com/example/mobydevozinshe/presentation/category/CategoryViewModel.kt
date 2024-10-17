@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobydevozinshe.data.api.ServiceBuilder
 import com.example.mobydevozinshe.data.model.MoviesPageResponse
+import com.example.mobydevozinshe.data.model.SimilarMoviesResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -12,6 +13,9 @@ class CategoryViewModel(): ViewModel() {
     private var _moviesPageResponse: MutableLiveData<MoviesPageResponse> =
         MutableLiveData()
     val moviesPageResponse: MutableLiveData<MoviesPageResponse> = _moviesPageResponse
+
+    private var _similarMoviesResponse: MutableLiveData<SimilarMoviesResponse> = MutableLiveData()
+    val similarMoviesResponse: MutableLiveData<SimilarMoviesResponse> = _similarMoviesResponse
 
     private var _errorResponse: MutableLiveData<String> = MutableLiveData()
     val errorResponse: MutableLiveData<String> = _errorResponse
@@ -52,6 +56,14 @@ class CategoryViewModel(): ViewModel() {
                     _errorResponse.postValue(it.message)
                 }
             )
+        }
+    }
+
+    fun getSimilarMovies(token: String, id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching { ServiceBuilder.api.getSimilarMoviesList(token, id) }
+                .onSuccess { _similarMoviesResponse.postValue(it) }
+                .onFailure { _errorResponse.postValue(it.message) }
         }
     }
 }

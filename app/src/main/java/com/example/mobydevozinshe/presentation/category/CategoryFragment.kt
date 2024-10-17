@@ -51,6 +51,8 @@ class CategoryFragment : Fragment() {
             viewModel.getGenrePage(token, args.categoryId)
         } else if (args.categoryType == "category") {
             viewModel.getCategoryPage(token, args.categoryId)
+        } else if (args.categoryType == "similar") {
+            viewModel.getSimilarMovies(token, args.categoryId)
         } else {
             viewModel.getAgeCategoryPage(token, args.categoryId)
         }
@@ -60,6 +62,15 @@ class CategoryFragment : Fragment() {
             binding.rvFavMovies.adapter = adapter
 
             adapter.submitList(it.content)
+            binding.toolbar.title.text = args.categoryName
+        }
+
+        viewModel.similarMoviesResponse.observe(viewLifecycleOwner) {
+            val adapter = CategoryAdapter()
+            binding.rvFavMovies.adapter = adapter
+
+            adapter.submitList(it)
+            binding.toolbar.title.text = args.categoryName
         }
 
         binding.rvFavMovies.addItemDecoration(CustomDividerItemDecoration(getDrawable(requireContext(), R.drawable.divider_1dp_grey)!!))

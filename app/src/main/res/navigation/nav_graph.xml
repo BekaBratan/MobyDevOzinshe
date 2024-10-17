@@ -90,6 +90,9 @@
             <argument
                 android:name="categoryType"
                 app:argType="string" />
+            <argument
+                android:name="categoryName"
+                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -148,6 +151,26 @@
                 android:name="movieId"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="movieId"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_detailFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment">
+            <argument
+                android:name="categoryId"
+                app:argType="integer" />
+            <argument
+                android:name="categoryType"
+                app:argType="string" />
+            <argument
+                android:name="categoryName"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/imageFragment"
@@ -198,6 +221,9 @@
             app:argType="integer" />
         <argument
             android:name="categoryType"
+            app:argType="string" />
+        <argument
+            android:name="categoryName"
             app:argType="string" />
     </fragment>
     <fragment

@@ -15,7 +15,9 @@ import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.databinding.FragmentDetailBinding
 import com.example.mobydevozinshe.presentation.detail.adapter.ImageAdapter
+import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickLinkCallback
+import com.example.mobydevozinshe.presentation.detail.adapter.SimilarAdapter
 import com.example.mobydevozinshe.provideNavigationHost
 
 class DetailFragment : Fragment() {
@@ -44,6 +46,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val token = SharedProvider(requireContext()).getToken()
         viewModel.getMovie(token, args.movieId)
+        viewModel.getSimilarMovies(token, args.movieId)
 
         viewModel.movieResponseItem.observe(viewLifecycleOwner) {
             binding.run {
@@ -139,6 +142,30 @@ class DetailFragment : Fragment() {
                 binding.btnFavourite.setBackgroundResource(R.drawable.ic_bookmark_outline)
             }
             favouriteState = it
+        }
+
+        viewModel.similarMoviesResponse.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.llSimilar.visibility = View.GONE
+                binding.rcSameMovies.visibility = View.GONE
+            } else {
+                val adapter = SimilarAdapter()
+                adapter.submitList(it)
+                adapter.setOnMovieClickListener(object : RcViewItemClickIdCallback {
+                    override fun onClick(id: Int) {
+                        findNavController().navigate(
+                            DetailFragmentDirections.actionDetailFragmentSelf(
+                                id
+                            )
+                        )
+                    }
+                })
+                binding.rcSameMovies.adapter = adapter
+            }
+        }
+
+        binding.llSimilar.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToCategoryFragment(args.movieId, "similar", getString(R.string.similar)))
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {

@@ -181,7 +181,8 @@
                 android:fontFamily="@font/sfprodisplayregular"
                 android:text="@string/link_authorization"
                 android:textColor="?attr/colorTertiary"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:layout_marginEnd="4dp"/>
 
             <TextView
                 android:id="@+id/tvLink"

@@ -14,6 +14,8 @@ import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.databinding.FragmentDetailBinding
+import com.example.mobydevozinshe.presentation.detail.adapter.ImageAdapter
+import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickLinkCallback
 import com.example.mobydevozinshe.provideNavigationHost
 
 class DetailFragment : Fragment() {
@@ -34,7 +36,7 @@ class DetailFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(true)
+            setNavigationVisibility(true)
         }
     }
 

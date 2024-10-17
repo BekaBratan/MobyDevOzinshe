@@ -1,4 +1,4 @@
-package com.example.mobydevozinshe.presentation.detail
+package com.example.mobydevozinshe.presentation
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable

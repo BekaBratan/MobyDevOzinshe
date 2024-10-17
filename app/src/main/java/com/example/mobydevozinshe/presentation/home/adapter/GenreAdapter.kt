@@ -43,7 +43,7 @@ class GenreAdapter: RecyclerView.Adapter<GenreAdapter.MyViewHolder>() {
             binding.tvCard.text = item.name
             Glide.with(itemView.context)
                 .load(item.link)
-                .into(binding.imgCard)
+                .into(binding.ivCard)
             itemView.setOnClickListener {
                 listenerClickAtItem?.onClick(item.id)
             }

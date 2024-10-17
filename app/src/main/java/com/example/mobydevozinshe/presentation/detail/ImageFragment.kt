@@ -26,7 +26,7 @@ class ImageFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(false)
+            setNavigationVisibility(false)
         }
     }
 

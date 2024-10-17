@@ -28,7 +28,7 @@ class SplashScreenFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(false)
+            setNavigationVisibility(false)
         }
     }
 

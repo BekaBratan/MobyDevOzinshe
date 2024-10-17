@@ -1,6 +1,6 @@
 package com.example.mobydevozinshe.data.model
 
-data class Auth(
+data class AuthRequest(
     val email: String,
     val password: String
 )

@@ -11,7 +11,7 @@
     <string name="signup">Регистрация</string>
     <string name="signupInfo">Заполните данные</string>
     <string name="errorRegistration">Зарегистрирован пользователь с таким email</string>
-    <string name="linkRegistration">У вас есть аккаунт?\\u0020</string>
+    <string name="linkRegistration">У вас есть аккаунт?</string>
     <string name="emailHint">Ваш email</string>
     <string name="passwordHint">Ваш пороль</string>
     <string name="wrongFormat">Неверный формат</string>
@@ -20,7 +20,7 @@
     <string name="error_authorization">Неверный Email или Пороль</string>
     <string name="forgotPassword">Забыли пороль?</string>
     <string name="signin">Войти</string>
-    <string name="link_authorization">Нет аккаунта?\\u0020</string>
+    <string name="link_authorization">Нет аккаунта?</string>
     <string name="or">Или</string>
     <string name="appleId">Зарегистрируйтесь с Apple ID</string>
     <string name="google">Зарегистрируйтесь с Google</string>
@@ -67,5 +67,9 @@
     <string name="chooseGenre">Выберите жанр</string>
     <string name="chooseAges">На возраст</string>
     <string name="languageValue">Руский</string>
-    <string name="watch">Қарау</string>
+    <string name="watch">Смотреть</string>
+    <string name="list">Список</string>
+    <string name="passwordsNotSame">Пороли не совпадают</string>
+    <string name="errorSignIn">Неправильный email или пороль</string>
+    <string name="fillAllFields">Заполните все поля</string>
 </resources>

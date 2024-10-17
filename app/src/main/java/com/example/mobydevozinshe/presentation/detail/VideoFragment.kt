@@ -39,7 +39,7 @@ class VideoFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         provideNavigationHost()?.apply {
-            setNavigationVisability(false)
+            setNavigationVisibility(false)
         }
         requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
     }
@@ -47,7 +47,7 @@ class VideoFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(false)
+            setNavigationVisibility(false)
         }
         requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
     }

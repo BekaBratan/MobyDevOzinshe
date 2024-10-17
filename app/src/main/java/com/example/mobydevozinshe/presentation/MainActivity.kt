@@ -1,14 +1,16 @@
 package com.example.mobydevozinshe.presentation
 
 import android.content.res.Configuration
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.marginBottom
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.transition.Visibility
 import com.example.mobydevozinshe.NavigationHostProvider
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
@@ -28,12 +30,11 @@ class MainActivity : AppCompatActivity(), NavigationHostProvider {
         binding!!.bottomNavbar.itemIconTintList = null
         val navController = navHostFragment.navController
         binding!!.bottomNavbar.setupWithNavController(navController)
-
         systemLanguage()
         systemDarkTheme()
     }
 
-    override fun setNavigationVisability(visible: Boolean) {
+    override fun setNavigationVisibility(visible: Boolean) {
         if (visible) {
             binding!!.bottomNavbar.visibility = View.VISIBLE
         } else {

@@ -60,7 +60,7 @@ class EditProfileFragment : Fragment() {
             binding.toolbar.title.text = getString(R.string.errorConnection)
         }
         binding.run {
-            toolbar.backButton.setOnClickListener {
+            toolbar.btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
 

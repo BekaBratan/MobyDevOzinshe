@@ -1,4 +1,4 @@
-package com.example.mobydevozinshe.presentation.detail
+package com.example.mobydevozinshe.presentation.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

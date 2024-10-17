@@ -1,4 +1,4 @@
-package com.example.mobydevozinshe.presentation.detail
+package com.example.mobydevozinshe.presentation.detail.adapter
 
 interface RcViewItemClickIdCallback {
     fun onClick(id: Int)

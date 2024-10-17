@@ -11,7 +11,7 @@
     <string name="signup">Тіркелу</string>
     <string name="signupInfo">Деректерді толтырыңыз</string>
     <string name="errorRegistration">Мұндай email-ы бар пайдаланушы тіркелген</string>
-    <string name="linkRegistration">Сізде аккаунт бар ма?\\u0020</string>
+    <string name="linkRegistration">Сізде аккаунт бар ма?</string>
     <string name="emailHint">Сіздің email</string>
     <string name="passwordHint">Сіздің құпия сөзіңіз</string>
     <string name="wrongFormat">Қате формат</string>
@@ -20,7 +20,7 @@
     <string name="error_authorization">Email немесе Құпия сөзіңіз қате</string>
     <string name="forgotPassword">Құпия сөзді ұмыттыңыз ба?</string>
     <string name="signin">Кіру</string>
-    <string name="link_authorization">Аккаунтыныз жоқ па?\\u0020</string>
+    <string name="link_authorization">Аккаунтыныз жоқ па?</string>
     <string name="or">Немесе</string>
     <string name="appleId">Apple ID-мен тіркеліңіз</string>
     <string name="google">Google-мен тіркеліңіз</string>
@@ -67,4 +67,8 @@
     <string name="chooseAges">Жасына сәйкес</string>
     <string name="languageValue">Қазақша</string>
     <string name="watch">Қарау</string>
+    <string name="list">Тізім</string>
+    <string name="passwordsNotSame">Құпия сөздер сәйкес емес</string>
+    <string name="errorSignIn">Email немесе құпия сөз қате</string>
+    <string name="fillAllFields">Барлық деректерді толтырыңыз</string>
 </resources>

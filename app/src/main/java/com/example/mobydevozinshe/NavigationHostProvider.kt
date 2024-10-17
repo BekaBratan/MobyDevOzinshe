@@ -1,5 +1,5 @@
 package com.example.mobydevozinshe
 
 interface NavigationHostProvider {
-    fun setNavigationVisability(visible: Boolean)
+    fun setNavigationVisibility(visible: Boolean)
 }

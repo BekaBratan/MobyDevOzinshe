@@ -1,4 +1,4 @@
-package com.example.mobydevozinshe.presentation.detail
+package com.example.mobydevozinshe.presentation.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,22 +6,22 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.mobydevozinshe.data.model.Screenshot
-import com.example.mobydevozinshe.databinding.ItemImageBinding
+import com.example.mobydevozinshe.data.model.Video
+import com.example.mobydevozinshe.databinding.ItemEpisodeBinding
 
-class ImageAdapter: RecyclerView.Adapter<ImageAdapter.MyViewHolder>() {
+class EpisodesAdapter: RecyclerView.Adapter<EpisodesAdapter.MyViewHolder>() {
 
-    private val diffCallback = object : DiffUtil.ItemCallback<Screenshot>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<Video>() {
         override fun areItemsTheSame(
-            oldItem: Screenshot,
-            newItem: Screenshot
+            oldItem: Video,
+            newItem: Video
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: Screenshot,
-            newItem: Screenshot
+            oldItem: Video,
+            newItem: Video
         ): Boolean {
             return oldItem == newItem
         }
@@ -29,21 +29,22 @@ class ImageAdapter: RecyclerView.Adapter<ImageAdapter.MyViewHolder>() {
     }
     private val differ = AsyncListDiffer(this, diffCallback)
 
-    fun submitList(list: List<Screenshot>){
+    fun submitList(list: List<Video>){
         differ.submitList(list)
     }
 
     private var listenerClickAtItem: RcViewItemClickLinkCallback? = null
-    fun setOnImageClickListener(listener: RcViewItemClickLinkCallback) {
+    fun setOnItemClickListener(listener: RcViewItemClickLinkCallback) {
         this.listenerClickAtItem = listener
     }
 
-    inner class MyViewHolder(private var binding: ItemImageBinding): RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: Screenshot) {
+    inner class MyViewHolder(private var binding: ItemEpisodeBinding): RecyclerView.ViewHolder(binding.root) {
+        fun onBind(item: Video) {
             binding.run {
                 Glide.with(itemView.context)
-                    .load(item.link)
-                    .into(ivScreenshot)
+                    .load("http://img.youtube.com/vi/${item.link}/maxresdefault.jpg")
+                    .into(imgEpisode)
+                tvEpisode.text = "${item.number}-ші бөлім"
             }
             itemView.setOnClickListener {
                 listenerClickAtItem?.onClick(item.link)
@@ -53,7 +54,7 @@ class ImageAdapter: RecyclerView.Adapter<ImageAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemEpisodeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 

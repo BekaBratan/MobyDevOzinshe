@@ -32,7 +32,7 @@ class OnboardFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(false)
+            setNavigationVisibility(false)
         }
     }
 

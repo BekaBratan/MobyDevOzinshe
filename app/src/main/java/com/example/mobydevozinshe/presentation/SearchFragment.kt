@@ -21,7 +21,7 @@ class SearchFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(true)
+            setNavigationVisibility(true)
         }
     }
 }

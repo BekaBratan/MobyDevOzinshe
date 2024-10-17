@@ -25,8 +25,8 @@ class ExitBottomsheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnExit.setOnClickListener {
-//            SharedProvider(requireContext()).clearShared()
-//            findNavController().navigate(R.id.action_profileFragment_to_authorizationFragment)
+            SharedProvider(requireContext()).clearShared()
+            findNavController().navigate(R.id.action_profileFragment_to_authorizationFragment)
         }
 
         binding.btnNo.setOnClickListener {

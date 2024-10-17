@@ -15,5 +15,8 @@
         <item name="colorOnSecondary">@color/Red50</item>
         <item name="colorButtonNormal">@color/Red600</item>
     </style>
-    <style name="Theme.MobyDevOzinshe" parent="Base.Theme.MobyDevOzinshe" />
+    <style name="Theme.MobyDevOzinshe" parent="Base.Theme.MobyDevOzinshe">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>

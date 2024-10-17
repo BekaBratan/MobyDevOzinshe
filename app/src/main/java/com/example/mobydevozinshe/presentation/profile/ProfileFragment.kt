@@ -1,6 +1,6 @@
 package com.example.mobydevozinshe.presentation.profile
 
-import android.content.res.Configuration
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentProfileBinding
 import com.example.mobydevozinshe.provideNavigationHost
-import java.util.Locale
 
 class ProfileFragment : Fragment(), OnLanguageSelectedListener {
     private lateinit var binding: FragmentProfileBinding
@@ -33,11 +31,12 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(true)
+            setNavigationVisibility(true)
         }
         binding.switchDarkTheme.isChecked = SharedProvider(requireContext()).getDarkTheme()
     }
 
+    @SuppressLint("DetachAndAttachSameFragment")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,16 +60,16 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
         binding.run {
             tvEmail.text = SharedProvider(requireContext()).getEmail()
 
-            switchDarkTheme.setOnCheckedChangeListener { _, isCheked ->
-                SharedProvider(requireContext()).saveDarkTheme(isCheked)
+            switchDarkTheme.setOnCheckedChangeListener { _, isChecked ->
+                SharedProvider(requireContext()).saveDarkTheme(isChecked)
                 AppCompatDelegate.setDefaultNightMode(
-                    if (isCheked) AppCompatDelegate.MODE_NIGHT_YES
+                    if (isChecked) AppCompatDelegate.MODE_NIGHT_YES
                     else AppCompatDelegate.MODE_NIGHT_NO
                 )
                 requireActivity().recreate()
             }
 
-            toolbar.backButton.setOnClickListener {
+            toolbar.btnBack.setOnClickListener {
                 findNavController().navigateUp()
             }
 
@@ -83,6 +82,10 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
 
             llPersonalInfo.setOnClickListener {
                 findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+            }
+
+            llChangePassword.setOnClickListener {
+                findNavController().navigate(R.id.action_profileFragment_to_changePasswordFragment)
             }
         }
     }

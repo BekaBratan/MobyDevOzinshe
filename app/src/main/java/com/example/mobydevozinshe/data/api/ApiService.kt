@@ -1,8 +1,10 @@
 package com.example.mobydevozinshe.data.api
 
 import com.example.mobydevozinshe.data.model.CategoryAgesResponse
-import com.example.mobydevozinshe.data.model.Auth
+import com.example.mobydevozinshe.data.model.AuthRequest
 import com.example.mobydevozinshe.data.model.AuthResponse
+import com.example.mobydevozinshe.data.model.ChangePasswordRequest
+import com.example.mobydevozinshe.data.model.FavouriteMoviesResponse
 import com.example.mobydevozinshe.data.model.GenreResponse
 import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponse
 import com.example.mobydevozinshe.data.model.MainMoviesResponse
@@ -23,12 +25,12 @@ import retrofit2.http.Query
 interface ApiService {
     @POST("/auth/V1/signup")
     suspend fun signUp(
-        @Body authorization: Auth
+        @Body authorization: AuthRequest
     ): AuthResponse
 
     @POST("/auth/V1/signin")
     suspend fun signIn(
-        @Body authorization: Auth
+        @Body authorization: AuthRequest
     ): AuthResponse
 
     @GET("/core/V1/movies/main")
@@ -86,6 +88,26 @@ interface ApiService {
         @Query("sortField") sortField: String = "createdDate"
     ): MoviesPageResponse
 
+    @GET("/core/V1/movies/page")
+    suspend fun getAgeCategoryPage(
+        @Header("Authorization") token: String,
+        @Query("categoryAgeId") categoryAgeId: Int,
+        @Query("direction") direction: String = "DESC",
+        @Query("page") page: Int = 0,
+        @Query("size") size: Int = 20,
+        @Query("sortField") sortField: String = "createdDate"
+    ): MoviesPageResponse
+
+    @GET("/core/V1/movies/page")
+    suspend fun getCategoryPage(
+        @Header("Authorization") token: String,
+        @Query("categoryId") categoryId: Int,
+        @Query("direction") direction: String = "DESC",
+        @Query("page") page: Int = 0,
+        @Query("size") size: Int = 20,
+        @Query("sortField") sortField: String = "createdDate"
+    ): MoviesPageResponse
+
     @GET("/core/V1/genres")
     suspend fun getGenres(
         @Header("Authorization") token: String
@@ -96,4 +118,14 @@ interface ApiService {
         @Header("Authorization") token: String
     ): CategoryAgesResponse
 
+    @GET("/core/V1/favorite")
+    suspend fun getFavouriteMoviesList(
+        @Header("Authorization") token: String
+    ): FavouriteMoviesResponse
+
+    @HTTP(method = "PUT", path = "/core/V1/user/profile/changePassword", hasBody = true)
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Body newPassword: ChangePasswordRequest
+    ): AuthResponse
 }

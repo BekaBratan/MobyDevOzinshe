@@ -11,7 +11,7 @@
     <string name="signup">Sign Up</string>
     <string name="signupInfo">Fill in the data</string>
     <string name="errorRegistration">User with such an email is registered</string>
-    <string name="linkRegistration">Do you have an account?\\u0020</string>
+    <string name="linkRegistration">Do you have an account?</string>
     <string name="emailHint">Your email</string>
     <string name="passwordHint">Your password</string>
     <string name="wrongFormat">Wrong format</string>
@@ -20,7 +20,7 @@
     <string name="error_authorization">Email or password is wrong</string>
     <string name="forgotPassword">Forgot a password?</string>
     <string name="signin">Sign in</string>
-    <string name="link_authorization">Don\'t have an account?\\u0020</string>
+    <string name="link_authorization">Don\'t have an account?</string>
     <string name="or">Or</string>
     <string name="appleId">Sign up with Apple ID</string>
     <string name="google">Sing up with Google</string>
@@ -67,5 +67,9 @@
     <string name="chooseGenre">Choose genre</string>
     <string name="chooseAges">By age</string>
     <string name="languageValue">English</string>
-    <string name="watch">Қарау</string>
+    <string name="watch">Watch</string>
+    <string name="list">List</string>
+    <string name="passwordsNotSame">Passwords are not same</string>
+    <string name="errorSignIn">Wrong email or password</string>
+    <string name="fillAllFields">Fill all fields</string>
 </resources>

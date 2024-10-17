@@ -5,19 +5,22 @@ import android.content.SharedPreferences
 import com.example.mobydevozinshe.data.model.AuthResponse
 
 class SharedProvider(private val context: Context) {
-    private val shared_token = "AccessToken"
-    private val token_type = "TokenType"
-    private val is_authorized = "isAuthorized"
+    private val sharedToken = "AccessToken"
+    private val tokenType = "TokenType"
+    private val isAuthorized = "isAuthorized"
 
     private val preferences: SharedPreferences
         get() = context.getSharedPreferences("User", Context.MODE_PRIVATE)
 
-    fun saveToken(token: String) {
-        preferences.edit().putString(shared_token, token).apply()
+    private val systemPreferences: SharedPreferences
+        get() = context.getSharedPreferences("Settings", Context.MODE_PRIVATE)
+
+    private fun saveToken(token: String) {
+        preferences.edit().putString(sharedToken, token).apply()
     }
 
     fun getToken():String {
-        return "${preferences.getString(token_type, "without_token_type")} ${preferences.getString(shared_token, "without_token")}"
+        return "${preferences.getString(tokenType, "without_token_type")} ${preferences.getString(sharedToken, "without_token")}"
     }
 
     fun clearShared() {
@@ -32,30 +35,30 @@ class SharedProvider(private val context: Context) {
         editor.putString("Email", user.email)
         editor.putStringSet("Roles", user.roles.toSet())
         editor.putInt("ID", user.id)
-        editor.putString(token_type, user.tokenType)
+        editor.putString(tokenType, user.tokenType)
         editor.putString("Username", user.username)
         editor.apply()
         saveToken(user.accessToken)
     }
 
     fun isAuthorized(): Boolean {
-        return preferences.getBoolean(is_authorized, false)
+        return preferences.getBoolean(isAuthorized, false)
     }
 
     fun saveLanguage(language: String) {
-        preferences.edit().putString("Language", language).apply()
+        systemPreferences.edit().putString("Language", language).apply()
     }
 
     fun getLanguage(): String {
-        return preferences.getString("Language", "kk").toString()
+        return systemPreferences.getString("Language", "kk").toString()
     }
 
     fun saveDarkTheme(isDark: Boolean) {
-        preferences.edit().putBoolean("DarkTheme", isDark).apply()
+        systemPreferences.edit().putBoolean("DarkTheme", isDark).apply()
     }
 
     fun getDarkTheme(): Boolean {
-        return preferences.getBoolean("DarkTheme", false)
+        return systemPreferences.getBoolean("DarkTheme", false)
     }
 
     fun getEmail(): String {
@@ -72,10 +75,6 @@ class SharedProvider(private val context: Context) {
 
     fun saveID(id: Int) {
         preferences.edit().putInt("ID", id).apply()
-    }
-
-    fun getBirthday(): Any {
-        return preferences.getString("Birthday", "no birthday").toString()
     }
 
     fun saveBirthday(birthday: Any) {

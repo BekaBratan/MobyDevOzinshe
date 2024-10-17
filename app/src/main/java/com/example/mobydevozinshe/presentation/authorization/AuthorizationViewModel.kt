@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobydevozinshe.data.api.ServiceBuilder
-import com.example.mobydevozinshe.data.model.Auth
+import com.example.mobydevozinshe.data.model.AuthRequest
 import com.example.mobydevozinshe.data.model.AuthResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ class AuthorizationViewModel(): ViewModel() {
     private var _errorResponse: MutableLiveData<String> = MutableLiveData()
     val errorResponse: LiveData<String> = _errorResponse
 
-    fun signUp(authorization: Auth) {
+    fun signUp(authorization: AuthRequest) {
         viewModelScope.launch(Dispatchers.IO) {
             runCatching { ServiceBuilder.api.signUp(authorization) }.fold(
                 onSuccess = {
@@ -30,7 +30,7 @@ class AuthorizationViewModel(): ViewModel() {
         }
     }
 
-    fun signIn(authorization: Auth) {
+    fun signIn(authorization: AuthRequest) {
         viewModelScope.launch(Dispatchers.IO) {
             runCatching { ServiceBuilder.api.signIn(authorization) }.fold(
                 onSuccess = {

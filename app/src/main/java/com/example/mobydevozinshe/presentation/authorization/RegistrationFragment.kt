@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentRegistrationBinding
-import com.example.mobydevozinshe.data.model.Auth
+import com.example.mobydevozinshe.data.model.AuthRequest
 import com.example.mobydevozinshe.provideNavigationHost
 
 class RegistrationFragment : Fragment() {
@@ -34,7 +34,7 @@ class RegistrationFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(false)
+            setNavigationVisibility(false)
         }
     }
 
@@ -45,13 +45,12 @@ class RegistrationFragment : Fragment() {
         viewModel.authorizationResponse.observe(viewLifecycleOwner) {
             Log.d("BBBB", "Success signIn \n $it")
             SharedProvider(requireContext()).saveUser(it)
-            findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
             binding.tvError.visibility = View.GONE
             findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            Log.e("BBBB", "Fail signIn $it")
+            binding.tvError.text = getString(R.string.errorSignIn)
             binding.tvError.visibility = View.VISIBLE
         }
 
@@ -82,9 +81,10 @@ class RegistrationFragment : Fragment() {
         binding.btnFinish.setOnClickListener {
             if (isValidEmail(binding.etEmail.text.toString()) && binding.etEmail.text.toString().isNotEmpty() && binding.etPassword1.text.toString()
                     .isNotEmpty() && binding.etPassword1.text.toString() == binding.etPassword2.text.toString()){
-                val auth = Auth(binding.etEmail.text.toString(), binding.etPassword1.text.toString())
-                viewModel.signUp(auth)
+                val authRequest = AuthRequest(binding.etEmail.text.toString(), binding.etPassword1.text.toString())
+                viewModel.signUp(authRequest)
             } else {
+                binding.tvError.text = getString(R.string.fillAllFields)
                 binding.tvError.visibility = View.VISIBLE
             }
         }

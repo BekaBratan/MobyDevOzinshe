@@ -12,6 +12,11 @@ import androidx.navigation.fragment.navArgs
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentEpisodesBinding
+import com.example.mobydevozinshe.presentation.CustomDividerItemDecoration
+import com.example.mobydevozinshe.presentation.detail.adapter.EpisodesAdapter
+import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickIdCallback
+import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickLinkCallback
+import com.example.mobydevozinshe.presentation.detail.adapter.SeasonsAdapter
 import com.example.mobydevozinshe.provideNavigationHost
 
 class EpisodesFragment : Fragment() {
@@ -31,7 +36,7 @@ class EpisodesFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         provideNavigationHost()?.apply {
-            setNavigationVisability(true)
+            setNavigationVisibility(true)
         }
     }
 
@@ -44,7 +49,7 @@ class EpisodesFragment : Fragment() {
         viewModel.seasonsResponseItem.observe(viewLifecycleOwner) {
             binding.run {
                 toolbar.title.text = "Бөлімдер"
-                toolbar.backButton.setOnClickListener { findNavController().popBackStack() }
+                toolbar.btnBack.setOnClickListener { findNavController().popBackStack() }
 
                 val adapterSeason = SeasonsAdapter()
                 adapterSeason.submitList(it)

@@ -31,12 +31,12 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        provideNavigationHost()?.apply { setNavigationVisability(true) }
+        provideNavigationHost()?.apply { setNavigationVisibility(true) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        provideNavigationHost()?.apply { setNavigationVisability(true) }
+        provideNavigationHost()?.apply { setNavigationVisibility(true) }
 
         val token = SharedProvider(requireContext()).getToken()
         viewModel.getMainMovies(token)
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
             val adapterGenres = GenreAdapter()
             adapterGenres.setOnGenreClickListener(object: RcViewItemClickIdCallback{
                 override fun onClick(movieId: Int) {
-                    // findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToGenreFragment(movieId))
+                     findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(movieId, "genre"))
                 }
             })
             binding.rcGenres.adapter = adapterGenres
@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
             val adapterCategoryAges = CategoryAgesAdapter()
             adapterCategoryAges.setOnCategoryAgesClickListener(object: RcViewItemClickIdCallback{
                 override fun onClick(movieId: Int) {
-                    // findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryAgesFragment(movieId))
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(movieId, "ageCategory"))
                 }
             })
             binding.rcCategoryAges.adapter = adapterCategoryAges
@@ -88,6 +88,11 @@ class HomeFragment : Fragment() {
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies1.submitList(it[0].movies)
             binding.tvCategoryName1.text = it[0].categoryName
+            val categoryId = it[0].categoryId
+            binding.llCategoryName1.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+
+            }
         }
 
         val adapterMainCategoryMovies2 = MainCategoryMoviesAdapter()
@@ -100,6 +105,11 @@ class HomeFragment : Fragment() {
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies2.submitList(it[1].movies)
             binding.tvCategoryName2.text = it[1].categoryName
+            val categoryId = it[1].categoryId
+            binding.llCategoryName2.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+
+            }
         }
 
         val adapterMainCategoryMovies3 = MainCategoryMoviesAdapter()
@@ -112,6 +122,11 @@ class HomeFragment : Fragment() {
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies3.submitList(it[2].movies)
             binding.tvCategoryName3.text = it[2].categoryName
+            val categoryId = it[2].categoryId
+            binding.llCategoryName3.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+
+            }
         }
 
         val adapterMainCategoryMovies4 = MainCategoryMoviesAdapter()
@@ -124,6 +139,11 @@ class HomeFragment : Fragment() {
         viewModel.mainCategoryMoviesResponse.observe(viewLifecycleOwner) {
             adapterMainCategoryMovies4.submitList(it[3].movies)
             binding.tvCategoryName4.text = it[3].categoryName
+            val categoryId = it[3].categoryId
+            binding.llCategoryName4.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(categoryId, "category"))
+
+            }
         }
     }
 }

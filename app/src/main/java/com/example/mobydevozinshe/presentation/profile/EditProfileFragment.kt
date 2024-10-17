@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.Editable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -90,6 +92,45 @@ class EditProfileFragment : Fragment() {
                     Log.d("BBBB", "onViewCreated: $it")
                 }
             }
+
+            etPhone.addTextChangedListener(object : PhoneNumberFormattingTextWatcher() {
+                private var isUpdating = false
+                private val phoneNumberPattern = "+# ### ###-##-##"
+
+                override fun afterTextChanged(s: Editable?) {
+                    if (isUpdating) {
+                        isUpdating = false
+                        return
+                    }
+
+                    val unformatted = s.toString().replace("\\D".toRegex(), "")
+                    val formatted = formatPhoneNumber(unformatted)
+
+                    isUpdating = true
+                    s?.replace(0, s.length, formatted)
+                }
+
+                private fun formatPhoneNumber(number: String): String {
+                    var formatted = ""
+                    var i = 0
+                    var prev = ""
+
+                    phoneNumberPattern.forEach { char ->
+                        if (char == '#' && i < number.length) {
+                            if (prev.isNotEmpty()) {
+                                formatted += prev
+                                prev = ""
+                            }
+                            formatted += number[i]
+                            i++
+                        } else if (char != '#') {
+                            prev = char.toString()
+                        }
+                    }
+
+                    return formatted
+                }
+            })
         }
     }
 

@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentFavouriteBinding
 import com.example.mobydevozinshe.presentation.CustomDividerItemDecoration
+import com.example.mobydevozinshe.presentation.category.CategoryFragmentDirections
 import com.example.mobydevozinshe.presentation.favourite.adapter.FavouriteMoviesAdapter
+import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.provideNavigationHost
 
 class FavouriteFragment : Fragment() {
@@ -50,6 +53,11 @@ class FavouriteFragment : Fragment() {
             val adapterFavouriteMovies = FavouriteMoviesAdapter()
             binding.rvFavMovies.adapter = adapterFavouriteMovies
 
+            adapterFavouriteMovies.setOnFavouriteClickListener(object: RcViewItemClickIdCallback {
+                override fun onClick(movieId: Int) {
+                    findNavController().navigate(FavouriteFragmentDirections.actionFavouriteFragmentToDetailFragment(movieId))
+                }
+            })
             adapterFavouriteMovies.submitList(it)
         }
 

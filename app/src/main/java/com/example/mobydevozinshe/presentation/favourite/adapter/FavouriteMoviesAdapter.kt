@@ -7,23 +7,23 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.mobydevozinshe.data.model.FavouriteMoviesResponseItem
+import com.example.mobydevozinshe.data.model.MoviesResponseItem
 import com.example.mobydevozinshe.databinding.ItemFavMoviesBinding
 import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
 
 class FavouriteMoviesAdapter: RecyclerView.Adapter<FavouriteMoviesAdapter.MyViewHolder>() {
 
-    private val diffCallback = object : DiffUtil.ItemCallback<FavouriteMoviesResponseItem>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<MoviesResponseItem>() {
         override fun areItemsTheSame(
-            oldItem: FavouriteMoviesResponseItem,
-            newItem: FavouriteMoviesResponseItem
+            oldItem: MoviesResponseItem,
+            newItem: MoviesResponseItem
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: FavouriteMoviesResponseItem,
-            newItem: FavouriteMoviesResponseItem
+            oldItem: MoviesResponseItem,
+            newItem: MoviesResponseItem
         ): Boolean {
             return oldItem == newItem
         }
@@ -31,7 +31,7 @@ class FavouriteMoviesAdapter: RecyclerView.Adapter<FavouriteMoviesAdapter.MyView
     }
     private val differ = AsyncListDiffer(this, diffCallback)
 
-    fun submitList(list: List<FavouriteMoviesResponseItem>){
+    fun submitList(list: List<MoviesResponseItem>){
         differ.submitList(list)
     }
 
@@ -42,7 +42,7 @@ class FavouriteMoviesAdapter: RecyclerView.Adapter<FavouriteMoviesAdapter.MyView
 
     inner class MyViewHolder(private var binding: ItemFavMoviesBinding): RecyclerView.ViewHolder(binding.root){
         @SuppressLint("SetTextI18n")
-        fun onBind(item: FavouriteMoviesResponseItem){
+        fun onBind(item: MoviesResponseItem){
             binding.tvName.text = item.name
             var genres = ""
             item.genres.forEach {

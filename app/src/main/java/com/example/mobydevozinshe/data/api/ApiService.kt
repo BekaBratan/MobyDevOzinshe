@@ -120,7 +120,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): CategoryAgesResponse
 
-    @GET("/core/V1/favorite")
+    @GET("/core/V1/favorite/")
     suspend fun getFavouriteMoviesList(
         @Header("Authorization") token: String
     ): FavouriteMoviesResponse

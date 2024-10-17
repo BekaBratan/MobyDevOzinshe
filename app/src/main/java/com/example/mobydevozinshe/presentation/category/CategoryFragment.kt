@@ -14,6 +14,7 @@ import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentCategoryBinding
 import com.example.mobydevozinshe.presentation.CustomDividerItemDecoration
 import com.example.mobydevozinshe.presentation.category.adapter.CategoryAdapter
+import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.provideNavigationHost
 
 class CategoryFragment : Fragment() {
@@ -62,6 +63,11 @@ class CategoryFragment : Fragment() {
             binding.rvFavMovies.adapter = adapter
 
             adapter.submitList(it.content)
+            adapter.setOnFavouriteClickListener(object: RcViewItemClickIdCallback {
+                override fun onClick(movieId: Int) {
+                    findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToDetailFragment(movieId))
+                }
+            })
             binding.toolbar.title.text = args.categoryName
         }
 
@@ -70,6 +76,11 @@ class CategoryFragment : Fragment() {
             binding.rvFavMovies.adapter = adapter
 
             adapter.submitList(it)
+            adapter.setOnFavouriteClickListener(object: RcViewItemClickIdCallback {
+                override fun onClick(movieId: Int) {
+                    findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToDetailFragment(movieId))
+                }
+            })
             binding.toolbar.title.text = args.categoryName
         }
 

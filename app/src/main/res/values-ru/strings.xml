@@ -72,4 +72,8 @@
     <string name="passwordsNotSame">Пороли не совпадают</string>
     <string name="errorSignIn">Неправильный email или пороль</string>
     <string name="fillAllFields">Заполните все поля</string>
+    <string name="search">Іздеу</string>
+    <string name="categories">Санаттар</string>
+    <string name="search_result">Іздеу нәтижелері</string>
+    <string name="nothing_found">Ештеңе табылмады</string>
 </resources>

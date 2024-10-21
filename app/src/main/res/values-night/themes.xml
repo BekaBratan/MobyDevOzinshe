@@ -12,6 +12,9 @@
         <item name="colorSecondaryVariant">@color/Grey800</item>
         <item name="colorOnSecondary">@color/Grey800</item>
         <item name="colorButtonNormal">@color/Red300</item>
+        <item name="colorOnTertiary">@color/Grey700</item>
+        <item name="colorOnTertiaryContainer">@color/Grey900</item>
+        <item name="colorOnTertiaryFixed">@color/Grey50</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>

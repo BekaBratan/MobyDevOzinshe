@@ -1,14 +1,10 @@
 package com.example.mobydevozinshe.presentation
 
 import android.content.res.Configuration
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.mobydevozinshe.NavigationHostProvider
@@ -28,6 +24,8 @@ class MainActivity : AppCompatActivity(), NavigationHostProvider {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
         binding!!.bottomNavbar.itemIconTintList = null
+        binding!!.bottomNavbar.itemRippleColor = null
+        binding!!.bottomNavbar.itemActiveIndicatorColor = null
         val navController = navHostFragment.navController
         binding!!.bottomNavbar.setupWithNavController(navController)
         systemLanguage()

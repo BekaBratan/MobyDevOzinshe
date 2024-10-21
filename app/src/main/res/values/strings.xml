@@ -78,4 +78,8 @@
     <string name="passwordsNotSame">Құпия сөздер сәйкес емес</string>
     <string name="errorSignIn">Email немесе құпия сөз қате</string>
     <string name="fillAllFields">Барлық деректерді толтырыңыз</string>
+    <string name="search">Іздеу</string>
+    <string name="categories">Санаттар</string>
+    <string name="search_result">Іздеу нәтижелері</string>
+    <string name="nothing_found">Ештеңе табылмады</string>
 </resources>

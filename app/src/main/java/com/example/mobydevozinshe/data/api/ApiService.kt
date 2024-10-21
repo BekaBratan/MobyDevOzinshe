@@ -3,6 +3,7 @@ package com.example.mobydevozinshe.data.api
 import com.example.mobydevozinshe.data.model.CategoryAgesResponse
 import com.example.mobydevozinshe.data.model.AuthRequest
 import com.example.mobydevozinshe.data.model.AuthResponse
+import com.example.mobydevozinshe.data.model.CategoriesResponse
 import com.example.mobydevozinshe.data.model.ChangePasswordRequest
 import com.example.mobydevozinshe.data.model.FavouriteMoviesResponse
 import com.example.mobydevozinshe.data.model.GenreResponse
@@ -11,6 +12,7 @@ import com.example.mobydevozinshe.data.model.MainCategoryMoviesResponseItem
 import com.example.mobydevozinshe.data.model.MainMoviesResponse
 import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.data.model.MoviesPageResponse
+import com.example.mobydevozinshe.data.model.MoviesResponse
 import com.example.mobydevozinshe.data.model.MoviesResponseItem
 import com.example.mobydevozinshe.data.model.SeasonsResponse
 import com.example.mobydevozinshe.data.model.SimilarMoviesResponse
@@ -136,4 +138,15 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): SimilarMoviesResponse
+
+    @GET("/core/V1/categories")
+    suspend fun getCategories(
+        @Header("Authorization") token: String
+    ): CategoriesResponse
+
+    @GET("/core/V1/movies/search")
+    suspend fun searchMovies(
+        @Header("Authorization") token: String,
+        @Query("search") search: String
+    ): MoviesResponse
 }

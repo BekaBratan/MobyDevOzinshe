@@ -30,6 +30,16 @@ class MainActivity : AppCompatActivity(), NavigationHostProvider {
         binding!!.bottomNavbar.setupWithNavController(navController)
         systemLanguage()
         systemDarkTheme()
+        hideSystemUI()
+    }
+
+    @Suppress("DEPRECATION")
+    private fun hideSystemUI() {
+        window.decorView.systemUiVisibility = (
+                View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                )
     }
 
     override fun setNavigationVisibility(visible: Boolean) {

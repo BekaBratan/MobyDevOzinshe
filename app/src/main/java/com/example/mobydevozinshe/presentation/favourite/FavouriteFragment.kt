@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -64,7 +65,7 @@ class FavouriteFragment : Fragment() {
         binding.rvFavMovies.addItemDecoration(CustomDividerItemDecoration(getDrawable(requireContext(), R.drawable.divider_1dp_grey)!!))
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            binding.toolbar.title.text = it
+            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
         }
     }
 

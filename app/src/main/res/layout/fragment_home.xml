@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="20dp"
+    android:clipToPadding="false"
     android:background="?attr/colorOnBackground"
     tools:context=".presentation.home.HomeFragment">
 

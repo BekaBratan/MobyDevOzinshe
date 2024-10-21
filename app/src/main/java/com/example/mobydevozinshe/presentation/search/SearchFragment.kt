@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -74,7 +75,7 @@ class SearchFragment : Fragment() {
             }
 
             viewModel.errorResponse.observe(viewLifecycleOwner) {
-                toolbar.title.text = it
+                Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
             }
 
             etSearch.addTextChangedListener {

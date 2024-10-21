@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -89,7 +90,7 @@ class EditProfileFragment : Fragment() {
 
                 viewModel.errorResponse.observe(viewLifecycleOwner) {
                     binding.toolbar.title.text = R.string.errorConnection.toString()
-                    Log.d("BBBB", "onViewCreated: $it")
+                    Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
                 }
             }
 

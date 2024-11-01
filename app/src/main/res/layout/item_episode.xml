@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Title"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:textColor="?attr/colorPrimary"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"

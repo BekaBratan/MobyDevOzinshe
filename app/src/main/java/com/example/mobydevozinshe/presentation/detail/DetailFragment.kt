@@ -15,6 +15,7 @@ import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.data.model.MovieIdModel
 import com.example.mobydevozinshe.databinding.FragmentDetailBinding
+import com.example.mobydevozinshe.presentation.ShimmerAdapter
 import com.example.mobydevozinshe.presentation.detail.adapter.ImageAdapter
 import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickLinkCallback
@@ -48,6 +49,11 @@ class DetailFragment : Fragment() {
         val token = SharedProvider(requireContext()).getToken()
         viewModel.getMovie(token, args.movieId)
         viewModel.getSimilarMovies(token, args.movieId)
+
+        val shimmerImageAdapter = ShimmerAdapter(5)
+        binding.rcScreenshots.adapter = shimmerImageAdapter
+        val shimmerPosterAdapter = ShimmerAdapter(0)
+        binding.rcSameMovies.adapter = shimmerPosterAdapter
 
         viewModel.movieResponseItem.observe(viewLifecycleOwner) {
             binding.run {

@@ -13,6 +13,7 @@ import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentFavouriteBinding
 import com.example.mobydevozinshe.presentation.CustomDividerItemDecoration
+import com.example.mobydevozinshe.presentation.ShimmerAdapter
 import com.example.mobydevozinshe.presentation.category.CategoryFragmentDirections
 import com.example.mobydevozinshe.presentation.favourite.adapter.FavouriteMoviesAdapter
 import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
@@ -49,6 +50,9 @@ class FavouriteFragment : Fragment() {
 
         val token = SharedProvider(requireContext()).getToken()
         viewModel.getFavouriteMovies(token)
+
+        val shimmerAdapter = ShimmerAdapter(4)
+        binding.rvFavMovies.adapter = shimmerAdapter
 
         viewModel.favouriteMoviesResponse.observe(viewLifecycleOwner) {
             val adapterFavouriteMovies = FavouriteMoviesAdapter()

@@ -14,6 +14,7 @@ import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentEpisodesBinding
 import com.example.mobydevozinshe.presentation.CustomDividerItemDecoration
+import com.example.mobydevozinshe.presentation.ShimmerAdapter
 import com.example.mobydevozinshe.presentation.detail.adapter.EpisodesAdapter
 import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.presentation.detail.adapter.RcViewItemClickLinkCallback
@@ -46,6 +47,9 @@ class EpisodesFragment : Fragment() {
 
         val token = SharedProvider(requireContext()).getToken()
         viewModel.getSeasons(token, args.movieId)
+
+        val shimmerAdapter = ShimmerAdapter(3)
+        binding.rcEpisodes.adapter = shimmerAdapter
 
         viewModel.seasonsResponseItem.observe(viewLifecycleOwner) {
             binding.run {

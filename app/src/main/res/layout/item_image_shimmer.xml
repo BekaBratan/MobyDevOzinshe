@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivScreenshot"
+            android:layout_width="184dp"
+            android:layout_height="112dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/style_corner_for_img_8dp"
+            android:background="@color/Grey400"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

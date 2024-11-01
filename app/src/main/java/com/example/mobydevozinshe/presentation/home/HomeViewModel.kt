@@ -13,6 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(): ViewModel() {
+    val scrollPosition = MutableLiveData<Int>()
+
     private var _mainMoviesResponse: MutableLiveData<MainMoviesResponse> = MutableLiveData()
     val mainMoviesResponse: LiveData<MainMoviesResponse> = _mainMoviesResponse
 

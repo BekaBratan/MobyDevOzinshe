@@ -14,6 +14,7 @@ import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.FragmentCategoryBinding
 import com.example.mobydevozinshe.presentation.CustomDividerItemDecoration
+import com.example.mobydevozinshe.presentation.ShimmerAdapter
 import com.example.mobydevozinshe.presentation.category.adapter.CategoryAdapter
 import com.example.mobydevozinshe.presentation.home.adapter.RcViewItemClickIdCallback
 import com.example.mobydevozinshe.provideNavigationHost
@@ -47,6 +48,9 @@ class CategoryFragment : Fragment() {
         binding.toolbar.btnBack.setOnClickListener {
             findNavController().navigateUp()
         }
+
+        val shimmerAdapter = ShimmerAdapter(4)
+        binding.rvFavMovies.adapter = shimmerAdapter
 
         val token = SharedProvider(requireContext()).getToken()
         if (args.categoryType == "genre") {

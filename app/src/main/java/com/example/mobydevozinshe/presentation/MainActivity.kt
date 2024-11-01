@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.mobydevozinshe.NavigationHostProvider
@@ -13,6 +14,7 @@ import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.databinding.ActivityMainBinding
 import java.util.Locale
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(), NavigationHostProvider {
 
     private var binding: ActivityMainBinding? = null
@@ -27,7 +29,12 @@ class MainActivity : AppCompatActivity(), NavigationHostProvider {
         binding!!.bottomNavbar.itemRippleColor = null
         binding!!.bottomNavbar.itemActiveIndicatorColor = null
         val navController = navHostFragment.navController
+        val navOptions = NavOptions.Builder().setLaunchSingleTop(true).setRestoreState(true).build()
         binding!!.bottomNavbar.setupWithNavController(navController)
+        binding!!.bottomNavbar.setOnNavigationItemSelectedListener{ item ->
+            navController.navigate(item.itemId, null, navOptions)
+            true
+        }
         systemLanguage()
         systemDarkTheme()
         hideSystemUI()

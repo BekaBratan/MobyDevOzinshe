@@ -55,7 +55,7 @@
     <string name="phone">Телефон</string>
     <string name="birthday">Туылған күні</string>
     <string name="saveChanges">Өзгерістерді сақтау</string>
-    <string name="errorConnection">Қосфлу қателігі</string>
+    <string name="errorConnection">Қосылу қателігі</string>
 
     <string name="january">қаңтар</string>
     <string name="february">ақпан</string>

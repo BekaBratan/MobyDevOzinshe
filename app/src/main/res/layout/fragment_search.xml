@@ -25,16 +25,16 @@
 
         <EditText
             android:id="@+id/etSearch"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="?attr/colorPrimary"
+            android:layout_weight="1"
             android:background="@drawable/sh_search"
-            android:padding="16dp"
-            android:textColorHint="@color/Grey400"
-            android:hint="@string/search"
             android:fontFamily="@font/sfprodisplaysemibold"
-            android:textSize="16sp"/>
+            android:hint="@string/search"
+            android:padding="16dp"
+            android:textColor="?attr/colorPrimary"
+            android:textColorHint="@color/Grey400"
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/btnSearch"

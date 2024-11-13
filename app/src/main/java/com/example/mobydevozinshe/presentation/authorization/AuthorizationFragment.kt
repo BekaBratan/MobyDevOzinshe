@@ -22,7 +22,7 @@ import com.example.mobydevozinshe.provideNavigationHost
 class AuthorizationFragment : Fragment() {
 
     private lateinit var binding: FragmentAuthorizationBinding
-    private val viewModel: AuthorizationViewModel by viewModels()
+    private lateinit var viewModel: AuthorizationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +44,8 @@ class AuthorizationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = AuthorizationViewModel(requireContext())
+
         viewModel.authorizationResponse.observe(viewLifecycleOwner) {
             Log.d("BBBB", "Success signIn \n $it")
             SharedProvider(requireContext()).saveUser(it)
@@ -52,7 +54,7 @@ class AuthorizationFragment : Fragment() {
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            binding.tvError.text = getString(R.string.errorSignIn)
+            binding.tvError.text = it
             binding.tvError.visibility = View.VISIBLE
             Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
         }

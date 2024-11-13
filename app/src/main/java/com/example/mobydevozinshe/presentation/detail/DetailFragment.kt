@@ -55,8 +55,32 @@ class DetailFragment : Fragment() {
         val shimmerPosterAdapter = ShimmerAdapter(0)
         binding.rcSameMovies.adapter = shimmerPosterAdapter
 
+        binding.run {
+            tvInfoShimmer.startShimmer()
+            tvTitleShimmer.startShimmer()
+            tvDescriptionShimmer.startShimmer()
+            ivScreenShimmer.startShimmer()
+            tvTextDirectorShimmer.startShimmer()
+            tvTextProducerShimmer.startShimmer()
+        }
+
         viewModel.movieResponseItem.observe(viewLifecycleOwner) {
             binding.run {
+
+                tvInfoShimmer.stopShimmer()
+                tvTitleShimmer.stopShimmer()
+                tvDescriptionShimmer.stopShimmer()
+                ivScreenShimmer.stopShimmer()
+                tvTextDirectorShimmer.stopShimmer()
+                tvTextProducerShimmer.stopShimmer()
+
+                tvInfoShimmer.visibility = View.GONE
+                tvTitleShimmer.visibility = View.GONE
+                tvDescriptionShimmer.visibility = View.GONE
+                ivScreenShimmer.visibility = View.GONE
+                tvTextDirectorShimmer.visibility = View.GONE
+                tvTextProducerShimmer.visibility = View.GONE
+
                 btnBack.setOnClickListener {
                     findNavController().navigateUp()
                 }
@@ -176,7 +200,7 @@ class DetailFragment : Fragment() {
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.errorConnection), Toast.LENGTH_SHORT).show()
         }
     }
 

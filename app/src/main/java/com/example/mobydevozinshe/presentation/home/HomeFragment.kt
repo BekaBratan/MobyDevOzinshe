@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.SharedProvider
 import com.example.mobydevozinshe.presentation.home.adapter.MainMoviesAdapter
 import com.example.mobydevozinshe.databinding.FragmentHomeBinding
@@ -182,7 +183,7 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.errorConnection), Toast.LENGTH_SHORT).show()
         }
     }
 }

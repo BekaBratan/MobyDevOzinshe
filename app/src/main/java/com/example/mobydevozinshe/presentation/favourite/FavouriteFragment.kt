@@ -69,7 +69,7 @@ class FavouriteFragment : Fragment() {
         binding.rvFavMovies.addItemDecoration(CustomDividerItemDecoration(getDrawable(requireContext(), R.drawable.divider_1dp_grey)!!))
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.errorConnection), Toast.LENGTH_SHORT).show()
         }
     }
 

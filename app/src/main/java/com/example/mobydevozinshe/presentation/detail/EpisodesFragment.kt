@@ -83,7 +83,7 @@ class EpisodesFragment : Fragment() {
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.errorConnection), Toast.LENGTH_SHORT).show()
         }
     }
 

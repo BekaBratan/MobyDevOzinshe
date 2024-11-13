@@ -152,6 +152,18 @@
                 android:background="?attr/colorOutline"/>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/errorRegistration"
+            android:textAlignment="center"
+            android:fontFamily="@font/sfprodisplayregular"
+            android:textSize="14sp"
+            android:textColor="@color/error"
+            android:layout_marginTop="32dp"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton

@@ -54,9 +54,9 @@ class ChangePasswordFragment : Fragment() {
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
-            binding.tvError.text = it
+            binding.tvError.text = getString(R.string.errorConnection)
             binding.tvError.visibility = View.VISIBLE
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.errorConnection), Toast.LENGTH_SHORT).show()
         }
     }
 

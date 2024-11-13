@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), NavigationHostProvider {
         binding!!.bottomNavbar.itemIconTintList = null
         binding!!.bottomNavbar.itemRippleColor = null
         binding!!.bottomNavbar.itemActiveIndicatorColor = null
+
         val navController = navHostFragment.navController
         val navOptions = NavOptions.Builder().setLaunchSingleTop(true).setRestoreState(true).build()
         binding!!.bottomNavbar.setupWithNavController(navController)

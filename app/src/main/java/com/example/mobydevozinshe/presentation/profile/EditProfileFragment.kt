@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.util.Log
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ import java.sql.Date
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlin.toString
 
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
@@ -72,26 +74,38 @@ class EditProfileFragment : Fragment() {
             }
 
             btnSave.setOnClickListener {
-                SharedProvider(requireContext()).saveEmail(etEmail.text.toString())
-                viewModel.updateUser(
-                    SharedProvider(requireContext()).getToken(),
-                    UserProfileRequest(
-                        birthday.toString(),
-                        SharedProvider(requireContext()).getID(),
-                        SharedProvider(requireContext()).getLanguage(),
-                        binding.etUsername.text.toString(),
-                        binding.etPhone.text.toString()
-                    )
-                )
-
-                viewModel.userRequestItem.observe(viewLifecycleOwner) {
-                    findNavController().navigateUp()
+                if (binding.etEmail.text.toString().isNotEmpty() && binding.etPhone.text.toString().isNotEmpty()
+                    && binding.etBirthday.text.toString().isNotEmpty() && binding.etUsername.text.toString().isNotEmpty()) {
+                    if (isValidEmail(binding.etEmail.text.toString())) {
+                        SharedProvider(requireContext()).saveEmail(etEmail.text.toString())
+                        viewModel.updateUser(
+                            SharedProvider(requireContext()).getToken(),
+                            UserProfileRequest(
+                                birthday.toString(),
+                                SharedProvider(requireContext()).getID(),
+                                SharedProvider(requireContext()).getLanguage(),
+                                binding.etUsername.text.toString(),
+                                binding.etPhone.text.toString()
+                            )
+                        )
+                    } else {
+                        binding.tvError.text = getString(R.string.wrongFormat)
+                        binding.tvError.visibility = View.VISIBLE
+                    }
+                } else {
+                    binding.tvError.text = getString(R.string.fillAllFields)
+                    binding.tvError.visibility = View.VISIBLE
                 }
+            }
 
-                viewModel.errorResponse.observe(viewLifecycleOwner) {
-                    binding.toolbar.title.text = R.string.errorConnection.toString()
-                    Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
-                }
+            viewModel.userRequestItem.observe(viewLifecycleOwner) {
+                findNavController().navigateUp()
+            }
+
+            viewModel.errorResponse.observe(viewLifecycleOwner) {
+                binding.tvError.text = getString(R.string.errorConnection)
+                binding.tvError.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), getString(R.string.errorConnection), Toast.LENGTH_SHORT).show()
             }
 
             etPhone.addTextChangedListener(object : PhoneNumberFormattingTextWatcher() {
@@ -156,4 +170,7 @@ class EditProfileFragment : Fragment() {
         return "${birthday.dayOfMonth} ${getString(resources.getIdentifier(birthday.month.toString().lowercase(), "string", requireContext().packageName))} ${birthday.year}"
     }
 
+    private fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
 }

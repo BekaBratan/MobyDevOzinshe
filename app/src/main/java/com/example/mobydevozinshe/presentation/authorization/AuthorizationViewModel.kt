@@ -1,16 +1,18 @@
 package com.example.mobydevozinshe.presentation.authorization
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobydevozinshe.R
 import com.example.mobydevozinshe.data.api.ServiceBuilder
 import com.example.mobydevozinshe.data.model.AuthRequest
 import com.example.mobydevozinshe.data.model.AuthResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AuthorizationViewModel(): ViewModel() {
+class AuthorizationViewModel(private val context: Context): ViewModel() {
     private var _authorizationResponse: MutableLiveData<AuthResponse> = MutableLiveData()
     val authorizationResponse: LiveData<AuthResponse> = _authorizationResponse
 
@@ -19,14 +21,17 @@ class AuthorizationViewModel(): ViewModel() {
 
     fun signUp(authorization: AuthRequest) {
         viewModelScope.launch(Dispatchers.IO) {
-            runCatching { ServiceBuilder.api.signUp(authorization) }.fold(
-                onSuccess = {
+            runCatching { ServiceBuilder.api.signUp(authorization) }
+                .onSuccess {
                     _authorizationResponse.postValue(it)
-                },
-                onFailure = {
-                    _errorResponse.postValue(it.message)
                 }
-            )
+                .onFailure {
+                    if (it.message!!.contains("HTTP 401")) {
+                        _errorResponse.postValue(context.getString(R.string.errorSignIn))
+                    } else {
+                        _errorResponse.postValue(context.getString(R.string.errorConnection))
+                    }
+                }
         }
     }
 
@@ -37,7 +42,11 @@ class AuthorizationViewModel(): ViewModel() {
                     _authorizationResponse.postValue(it)
                 },
                 onFailure = {
-                    _errorResponse.postValue(it.message)
+                    if (it.message!!.contains("HTTP 401")) {
+                        _errorResponse.postValue(context.getString(R.string.errorSignIn))
+                    } else {
+                        _errorResponse.postValue(context.getString(R.string.errorConnection))
+                    }
                 }
             )
         }

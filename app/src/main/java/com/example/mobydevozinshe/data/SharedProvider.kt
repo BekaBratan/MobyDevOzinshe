@@ -5,9 +5,12 @@ import android.content.SharedPreferences
 import com.example.mobydevozinshe.data.model.AuthResponse
 
 class SharedProvider(private val context: Context) {
-    private val sharedToken = "AccessToken"
-    private val tokenType = "TokenType"
-    private val isAuthorized = "isAuthorized"
+    companion object {
+        private const val sharedToken = "AccessToken"
+        private const val tokenType = "TokenType"
+        private const val isAuthorized = "isAuthorized"
+    }
+
 
     private val preferences: SharedPreferences
         get() = context.getSharedPreferences("User", Context.MODE_PRIVATE)

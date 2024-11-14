@@ -19,7 +19,7 @@
         <item name="colorOnTertiaryFixed">@color/Grey700</item>
     </style>
     <style name="Theme.MobyDevOzinshe" parent="Base.Theme.MobyDevOzinshe">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
     </style>
 </resources>

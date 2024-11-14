@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.MobyDevOzinshe" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MobyDevOzinshe" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorSwitchThumbNormal">@color/Red300</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorSecondary">@color/white</item>
@@ -17,5 +17,9 @@
         <item name="colorOnTertiaryFixed">@color/Grey50</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    <style name="Theme.MobyDevOzinshe" parent="Base.Theme.MobyDevOzinshe">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
     </style>
 </resources>

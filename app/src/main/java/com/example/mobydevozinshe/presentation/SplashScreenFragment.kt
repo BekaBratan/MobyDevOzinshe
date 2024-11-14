@@ -29,6 +29,14 @@ class SplashScreenFragment : Fragment() {
         super.onStart()
         provideNavigationHost()?.apply {
             setNavigationVisibility(false)
+            hideSystemUI(true)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        provideNavigationHost()?.apply {
+            hideSystemUI(false)
         }
     }
 

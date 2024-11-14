@@ -63,10 +63,7 @@ class ProfileFragment : Fragment(), OnLanguageSelectedListener {
 
             switchDarkTheme.setOnCheckedChangeListener { _, isChecked ->
                 SharedProvider(requireContext()).saveDarkTheme(isChecked)
-                AppCompatDelegate.setDefaultNightMode(
-                    if (isChecked) AppCompatDelegate.MODE_NIGHT_YES
-                    else AppCompatDelegate.MODE_NIGHT_NO
-                )
+                provideNavigationHost()?.setDarkTheme(isChecked)
                 requireActivity().recreate()
             }
 
